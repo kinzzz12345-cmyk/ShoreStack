@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "ShoreStack",
   tagline: "Clean Design. Powerful Systems. One Partner.",
   email: "k.patelsoftwaredeveloper@gmail.com",
-  phone: "(555) 000-0000",
+  phone: "(240) 442-8990",
   url: "https://shorestack.com",
   description:
     "ShoreStack delivers clean design and powerful systems. 20 years of full stack engineering experience building enterprise SaaS platforms, modern web apps, and scalable digital systems.",
