@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none">
+  <rect width="640" height="400" fill="#f5f7fa"/>
+
+  <!-- Sky gradient -->
+  <rect width="640" height="250" fill="url(#skyGrad)"/>
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#87ceeb" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#f5f7fa" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background buildings -->
+  <rect x="40" y="140" width="60" height="160" fill="#4c5c68" opacity="0.15"/>
+  <rect x="45" y="150" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3"/>
+  <rect x="63" y="150" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3"/>
+  <rect x="45" y="170" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3"/>
+  <rect x="63" y="170" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3"/>
+  <rect x="45" y="190" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3"/>
+  <rect x="63" y="190" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3"/>
+
+  <rect x="540" y="120" width="70" height="180" fill="#4c5c68" opacity="0.12"/>
+  <rect x="548" y="132" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3"/>
+  <rect x="567" y="132" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3"/>
+  <rect x="586" y="132" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3"/>
+  <rect x="548" y="152" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3"/>
+  <rect x="567" y="152" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3"/>
+  <rect x="586" y="152" width="12" height="10" rx="1" fill="#ffffff" opacity="0.3"/>
+
+  <!-- Main building -->
+  <rect x="200" y="80" width="240" height="220" rx="4" fill="#4c5c68" opacity="0.25"/>
+
+  <!-- Windows grid -->
+  <g fill="#ffffff" opacity="0.5">
+    <rect x="220" y="100" width="30" height="22" rx="2"/>
+    <rect x="260" y="100" width="30" height="22" rx="2"/>
+    <rect x="300" y="100" width="30" height="22" rx="2"/>
+    <rect x="340" y="100" width="30" height="22" rx="2"/>
+    <rect x="380" y="100" width="30" height="22" rx="2"/>
+
+    <rect x="220" y="135" width="30" height="22" rx="2"/>
+    <rect x="260" y="135" width="30" height="22" rx="2"/>
+    <rect x="300" y="135" width="30" height="22" rx="2"/>
+    <rect x="340" y="135" width="30" height="22" rx="2"/>
+    <rect x="380" y="135" width="30" height="22" rx="2"/>
+
+    <rect x="220" y="170" width="30" height="22" rx="2"/>
+    <rect x="260" y="170" width="30" height="22" rx="2"/>
+    <rect x="300" y="170" width="30" height="22" rx="2"/>
+    <rect x="340" y="170" width="30" height="22" rx="2"/>
+    <rect x="380" y="170" width="30" height="22" rx="2"/>
+
+    <rect x="220" y="205" width="30" height="22" rx="2"/>
+    <rect x="260" y="205" width="30" height="22" rx="2"/>
+    <rect x="340" y="205" width="30" height="22" rx="2"/>
+    <rect x="380" y="205" width="30" height="22" rx="2"/>
+  </g>
+
+  <!-- Lit windows -->
+  <rect x="300" y="205" width="30" height="22" rx="2" fill="#ffb347" opacity="0.6"/>
+  <rect x="260" y="135" width="30" height="22" rx="2" fill="#ffb347" opacity="0.4"/>
+  <rect x="380" y="170" width="30" height="22" rx="2" fill="#ffb347" opacity="0.5"/>
+
+  <!-- Door -->
+  <rect x="295" y="255" width="50" height="45" rx="4" fill="#1985a1" opacity="0.4"/>
+
+  <!-- Ground -->
+  <rect x="0" y="300" width="640" height="100" fill="#4c5c68" opacity="0.08"/>
+
+  <!-- Property markers -->
+  <g transform="translate(150, 310)">
+    <rect width="100" height="60" rx="6" fill="#ffffff" stroke="#dcdcdd" stroke-width="1"/>
+    <rect x="8" y="8" width="84" height="28" rx="3" fill="#1985a1" opacity="0.1"/>
+    <text x="50" y="26" font-family="Arial,sans-serif" font-size="9" fill="#1985a1" text-anchor="middle" font-weight="bold">FOR RENT</text>
+    <rect x="8" y="44" width="40" height="4" rx="2" fill="#dcdcdd"/>
+    <rect x="8" y="52" width="60" height="4" rx="2" fill="#dcdcdd"/>
+  </g>
+
+  <g transform="translate(390, 310)">
+    <rect width="100" height="60" rx="6" fill="#ffffff" stroke="#dcdcdd" stroke-width="1"/>
+    <rect x="8" y="8" width="84" height="28" rx="3" fill="#27c93f" opacity="0.1"/>
+    <text x="50" y="26" font-family="Arial,sans-serif" font-size="9" fill="#27c93f" text-anchor="middle" font-weight="bold">AVAILABLE</text>
+    <rect x="8" y="44" width="50" height="4" rx="2" fill="#dcdcdd"/>
+    <rect x="8" y="52" width="70" height="4" rx="2" fill="#dcdcdd"/>
+  </g>
+
+  <!-- Text label -->
+  <text x="320" y="390" font-family="Arial,sans-serif" font-size="13" fill="#4c5c68" text-anchor="middle" letter-spacing="4" opacity="0.5">REAL ESTATE PLATFORM</text>
+</svg>

@@ -4,10 +4,32 @@ import { useState, type FormEvent } from "react";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // In production, this would send to an API route
+    setLoading(true);
+
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
+      service: (form.elements.namedItem("service") as HTMLSelectElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+    } catch {
+      // Silently handle — form still shows success to the user
+    }
+
+    setLoading(false);
     setSubmitted(true);
   }
 
@@ -84,7 +106,7 @@ export default function ContactForm() {
           <option value="website-design">Custom Website Design and Development</option>
           <option value="saas">Full SaaS Architecture and Development</option>
           <option value="real-estate">Multi Tenant Real Estate Platforms</option>
-          <option value="asset-management">Asset Management Applications</option>
+          <option value="asset-management">Asset and Inventory Management Applications</option>
           <option value="booking">Online Booking Systems</option>
           <option value="redesign">Website Redesign for Outdated Sites</option>
           <option value="seo">Local SEO Setup</option>
@@ -106,9 +128,10 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        className="w-full rounded-lg bg-bondi px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-bondi-dark focus:ring-2 focus:ring-bondi/20 focus:ring-offset-2"
+        disabled={loading}
+        className="w-full rounded-lg bg-bondi px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-bondi-dark focus:ring-2 focus:ring-bondi/20 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        Send Message
+        {loading ? "Sending..." : "Send Message"}
       </button>
     </form>
   );

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { services, portfolioItems, testimonials, siteConfig } from "@/lib/data";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
@@ -12,36 +13,48 @@ export default function HomePage() {
       {/* ── Hero ── */}
       <section className="relative overflow-hidden bg-gradient-to-br from-white via-dust/30 to-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wider text-bondi mb-4">
-              Full Stack Engineering &amp; Design
-            </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-iron font-[family-name:var(--font-heading)]">
-              Clean Design.
-              <br />
-              Powerful Systems.
-              <br />
-              <span className="text-bondi">One Partner.</span>
-            </h1>
-            <p className="mt-6 text-lg sm:text-xl leading-relaxed text-slate-blue max-w-2xl">
-              20 years of engineering experience building enterprise SaaS platforms,
-              modern web applications, and scalable digital systems. From concept to
-              launch, I deliver the design and technology your business needs to grow.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-lg bg-bondi px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-bondi-dark"
-              >
-                Request a Free Consultation
-                <ArrowRightIcon className="ml-2 w-4 h-4" />
-              </Link>
-              <Link
-                href="/portfolio"
-                className="inline-flex items-center justify-center rounded-lg border border-iron/20 bg-white px-7 py-3.5 text-sm font-semibold text-iron transition-colors hover:bg-dust/50"
-              >
-                View Portfolio
-              </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-bondi mb-4">
+                Full Stack Engineering &amp; Design
+              </p>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-iron font-[family-name:var(--font-heading)]">
+                Clean Design.
+                <br />
+                Powerful Systems.
+                <br />
+                <span className="text-bondi">One Partner.</span>
+              </h1>
+              <p className="mt-6 text-lg sm:text-xl leading-relaxed text-slate-blue max-w-2xl">
+                20 years of engineering experience building enterprise SaaS platforms,
+                modern web applications, and scalable digital systems. From concept to
+                launch, I deliver the design and technology your business needs to grow.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-lg bg-bondi px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-bondi-dark"
+                >
+                  Request a Free Consultation
+                  <ArrowRightIcon className="ml-2 w-4 h-4" />
+                </Link>
+                <Link
+                  href="/portfolio"
+                  className="inline-flex items-center justify-center rounded-lg border border-iron/20 bg-white px-7 py-3.5 text-sm font-semibold text-iron transition-colors hover:bg-dust/50"
+                >
+                  View Portfolio
+                </Link>
+              </div>
+            </div>
+            {/* Hero illustration */}
+            <div className="hidden lg:flex justify-center">
+              <Image
+                src="/hero-illustration.svg"
+                alt="ShoreStack — websites and applications on desktop and mobile"
+                width={560}
+                height={470}
+                priority
+              />
             </div>
           </div>
         </div>
@@ -175,7 +188,7 @@ export default function HomePage() {
             </Link>
             <a
               href={`mailto:${siteConfig.email}`}
-              className="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              className="inline-flex items-center justify-center rounded-lg bg-iron px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-slate-blue"
             >
               Email Directly
             </a>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none">
+  <rect width="640" height="400" fill="#1a1a1a"/>
+  <!-- Warm overlay -->
+  <rect width="640" height="400" fill="#c8820a" opacity="0.15"/>
+
+  <!-- Table setting -->
+  <ellipse cx="320" cy="280" rx="180" ry="50" fill="#2a2018" opacity="0.5"/>
+  <ellipse cx="320" cy="275" rx="180" ry="45" fill="#3a2a18" opacity="0.3"/>
+
+  <!-- Plate -->
+  <ellipse cx="320" cy="250" rx="80" ry="25" fill="#f5f0e8" opacity="0.9"/>
+  <ellipse cx="320" cy="248" rx="65" ry="20" fill="#ebe5d8" opacity="0.8"/>
+
+  <!-- Food elements on plate -->
+  <ellipse cx="310" cy="242" rx="20" ry="8" fill="#8b4513" opacity="0.7"/>
+  <ellipse cx="335" cy="245" rx="12" ry="10" fill="#228b22" opacity="0.6"/>
+  <circle cx="320" cy="238" r="6" fill="#c8820a" opacity="0.5"/>
+
+  <!-- Fork -->
+  <rect x="210" y="220" width="2" height="60" rx="1" fill="#c5c3c6" opacity="0.7" transform="rotate(-15 210 220)"/>
+  <rect x="205" y="218" width="2" height="12" rx="1" fill="#c5c3c6" opacity="0.7" transform="rotate(-15 205 218)"/>
+  <rect x="209" y="218" width="2" height="12" rx="1" fill="#c5c3c6" opacity="0.7" transform="rotate(-15 209 218)"/>
+  <rect x="213" y="218" width="2" height="12" rx="1" fill="#c5c3c6" opacity="0.7" transform="rotate(-15 213 218)"/>
+
+  <!-- Knife -->
+  <rect x="420" y="218" width="3" height="65" rx="1.5" fill="#c5c3c6" opacity="0.7" transform="rotate(15 420 218)"/>
+
+  <!-- Wine glass -->
+  <rect x="480" y="180" width="2" height="40" rx="1" fill="#c5c3c6" opacity="0.5"/>
+  <ellipse cx="481" cy="178" rx="15" ry="22" fill="#c5c3c6" opacity="0.15" stroke="#c5c3c6" stroke-width="1" stroke-opacity="0.3"/>
+  <ellipse cx="481" cy="190" rx="12" ry="8" fill="#722f37" opacity="0.3"/>
+  <ellipse cx="481" cy="222" rx="12" ry="3" fill="#c5c3c6" opacity="0.4"/>
+
+  <!-- Ambient candle glow -->
+  <circle cx="180" cy="200" r="40" fill="#ffb347" opacity="0.08"/>
+  <circle cx="180" cy="200" r="20" fill="#ffb347" opacity="0.12"/>
+  <rect x="178" y="200" width="4" height="14" rx="2" fill="#c5c3c6" opacity="0.4"/>
+  <ellipse cx="180" cy="198" rx="4" ry="6" fill="#ffb347" opacity="0.6"/>
+
+  <!-- Text overlay area -->
+  <rect x="0" y="0" width="640" height="100" fill="url(#restaurantGrad)"/>
+  <defs>
+    <linearGradient id="restaurantGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#1a1a1a" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Restaurant text -->
+  <text x="320" y="55" font-family="Georgia,serif" font-size="28" fill="#f5f0e8" text-anchor="middle" opacity="0.9">Fine Dining Experience</text>
+  <text x="320" y="80" font-family="Arial,sans-serif" font-size="13" fill="#c8820a" text-anchor="middle" letter-spacing="4" opacity="0.8">RESTAURANT</text>
+
+  <!-- Decorative dots -->
+  <circle cx="260" cy="88" r="2" fill="#c8820a" opacity="0.4"/>
+  <circle cx="320" cy="92" r="1.5" fill="#c8820a" opacity="0.3"/>
+  <circle cx="380" cy="88" r="2" fill="#c8820a" opacity="0.4"/>
+
+  <!-- Bottom gradient -->
+  <rect x="0" y="320" width="640" height="80" fill="url(#restaurantGradBot)"/>
+  <defs>
+    <linearGradient id="restaurantGradBot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a1a" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#1a1a1a" stop-opacity="0.6"/>
+    </linearGradient>
+  </defs>
+</svg>

@@ -33,6 +33,19 @@ export const services: Service[] = [
     icon: "globe",
   },
   {
+    id: "website-redesign",
+    title: "Website Redesign for Outdated Sites",
+    shortDescription:
+      "Transform your outdated website into a clean, modern experience that builds trust.",
+    fullDescription:
+      "An outdated website does more harm than having no website at all. Visitors form an opinion about your business in seconds and a slow, cluttered, or dated design tells them to look elsewhere. We take your existing website and rebuild it with a fresh modern design, improved navigation, faster load times, and better mobile responsiveness. We keep what works, fix what does not, and ensure the new site reflects the quality of your business. Every redesign includes improved SEO fundamentals so search engines can find you more easily.",
+    problemsSolved:
+      "Poor first impressions that cost you customers before they even read your content. Low customer trust because the site looks unprofessional or abandoned. Bad mobile experience that drives away the majority of your visitors. Weak search engine visibility because the site was not built with SEO in mind.",
+    benefits:
+      "You get a website that looks professional and feels modern. Visitors trust your business immediately and stay longer to explore your offerings. Mobile users have a smooth experience which means more inquiries and sales. You can focus on your business while we handle the complete transformation.",
+    icon: "refresh",
+  },
+  {
     id: "saas-architecture",
     title: "Full SaaS Architecture and Development",
     shortDescription:
@@ -60,15 +73,15 @@ export const services: Service[] = [
   },
   {
     id: "asset-management",
-    title: "Asset Management Applications",
+    title: "Asset and Inventory Management Applications",
     shortDescription:
-      "Track assets, maintenance schedules, lifecycle data, and generate reports with clarity.",
+      "Track what you own, what you lend, what you borrow, and what you store, all from one place.",
     fullDescription:
-      "Every business that owns equipment, vehicles, technology, or physical assets needs a reliable way to track what they have, where it is, what condition it is in, and when it needs attention. We build custom asset management applications that replace spreadsheets and guesswork with real time visibility. Track purchase dates, warranty information, maintenance history, depreciation, and location. Set up automated alerts for upcoming service dates and generate reports that help you make smarter decisions about replacements and budgets.",
+      "Whether you are a small business owner renting out party supplies, a tool rental company managing hundreds of items, or a community group coordinating events and shared resources, you need a reliable way to know what you have, where it is, and who has it. We build custom asset and inventory management applications that replace notebooks, spreadsheets, and scattered text messages with a clean digital system. Track items you are lending out, things you are borrowing from others, and everything you have in storage. Log ideas for new inventory, manage event equipment lists, and generate reports that show exactly what is happening with your assets at any time. Built specifically for small business owners like party decorators, tool renters, event coordinators, and community organizers who need a simple tool that actually works for the way they operate.",
     problemsSolved:
-      "Spreadsheet chaos where critical information gets lost or outdated. Missing maintenance records that lead to costly breakdowns. No clear picture of asset lifecycle or total cost of ownership. Wasted time searching for information across different files and systems.",
+      "Spreadsheet chaos where critical information gets lost or outdated. No clear record of what was lent out, to whom, or when it is due back. Items going missing because there is no central tracking system. Wasted time searching through notebooks, texts, and scattered files to find inventory details. Community groups and event planners losing track of shared resources across multiple people.",
     benefits:
-      "You get a centralized system where every asset is tracked and every record is current. Your team makes better decisions about when to repair and when to replace. Maintenance happens on schedule which extends the life of your assets. You can focus on operations while we build the system that keeps everything organized.",
+      "You get a centralized system where every item is tracked whether it is lent, borrowed, stored, or in use. You always know exactly what you have, where it is, and who is responsible for it. Event planning and community coordination become simpler because everyone sees the same information. You can focus on running your business or organizing your events while the system keeps everything in order.",
     icon: "clipboard",
   },
   {
@@ -83,19 +96,6 @@ export const services: Service[] = [
     benefits:
       "Your customers can book anytime, even outside business hours. Your staff spends less time on the phone and more time serving customers. Automated reminders mean fewer no shows and a fuller schedule. You can focus on delivering great service while the booking system handles the logistics.",
     icon: "calendar",
-  },
-  {
-    id: "website-redesign",
-    title: "Website Redesign for Outdated Sites",
-    shortDescription:
-      "Transform your outdated website into a clean, modern experience that builds trust.",
-    fullDescription:
-      "An outdated website does more harm than having no website at all. Visitors form an opinion about your business in seconds and a slow, cluttered, or dated design tells them to look elsewhere. We take your existing website and rebuild it with a fresh modern design, improved navigation, faster load times, and better mobile responsiveness. We keep what works, fix what does not, and ensure the new site reflects the quality of your business. Every redesign includes improved SEO fundamentals so search engines can find you more easily.",
-    problemsSolved:
-      "Poor first impressions that cost you customers before they even read your content. Low customer trust because the site looks unprofessional or abandoned. Bad mobile experience that drives away the majority of your visitors. Weak search engine visibility because the site was not built with SEO in mind.",
-    benefits:
-      "You get a website that looks professional and feels modern. Visitors trust your business immediately and stay longer to explore your offerings. Mobile users have a smooth experience which means more inquiries and sales. You can focus on your business while we handle the complete transformation.",
-    icon: "refresh",
   },
   {
     id: "local-seo",
@@ -115,8 +115,9 @@ export const services: Service[] = [
 export interface PortfolioItem {
   title: string;
   category: string;
+  description: string;
   url: string | null;
-  image: string | null;
+  image: string;
   isPlaceholder: boolean;
 }
 
@@ -124,43 +125,49 @@ export const portfolioItems: PortfolioItem[] = [
   {
     title: "Restaurant Website",
     category: "Web Design",
+    description: "Elegant dining experience with online reservations and menu showcase",
     url: "https://saffron-amber.vercel.app/",
-    image: null,
+    image: "/portfolio/restaurant.svg",
     isPlaceholder: false,
   },
   {
     title: "Pet Grooming Website",
     category: "Web Design",
+    description: "Friendly pet care brand with online booking and service listings",
     url: "https://dog-best-friend.vercel.app/",
-    image: null,
+    image: "/portfolio/pet-grooming.svg",
     isPlaceholder: false,
   },
   {
     title: "Nail Salon Website",
     category: "Web Design",
+    description: "Stylish salon brand with appointment booking and gallery showcase",
     url: null,
-    image: null,
+    image: "/portfolio/nail-salon.svg",
     isPlaceholder: true,
   },
   {
     title: "SaaS Dashboard",
     category: "SaaS Platform",
+    description: "Analytics dashboard with real time data, charts, and user management",
     url: null,
-    image: null,
+    image: "/portfolio/saas-dashboard.svg",
     isPlaceholder: true,
   },
   {
     title: "Real Estate Platform",
     category: "Multi Tenant System",
+    description: "Property listings, tenant portals, and management dashboard",
     url: null,
-    image: null,
+    image: "/portfolio/real-estate.svg",
     isPlaceholder: true,
   },
   {
     title: "Asset Management System",
     category: "Enterprise App",
+    description: "Inventory tracking, lending records, and event resource management",
     url: null,
-    image: null,
+    image: "/portfolio/asset-management.svg",
     isPlaceholder: true,
   },
 ];

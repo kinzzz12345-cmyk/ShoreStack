@@ -16,19 +16,33 @@ export const metadata: Metadata = {
     "custom website design",
     "real estate platform",
     "asset management",
+    "inventory management",
     "booking system",
     "website redesign",
     "local SEO",
     "full stack developer",
     "mobile first design",
+    "party decorator tools",
+    "tool rental software",
+    "community event management",
   ],
   authors: [{ name: siteConfig.name }],
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
+  metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: siteConfig.name,
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
+    url: siteConfig.url,
   },
   twitter: {
     card: "summary_large_image",
@@ -38,6 +52,13 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 

@@ -56,7 +56,7 @@ export default function ServicesPage() {
                     <div className={`space-y-6 ${!isEven ? "lg:order-1 lg:direction-ltr" : ""}`}>
                       <div className="rounded-2xl border border-dust bg-dust/20 p-6 sm:p-8">
                         <h3 className="text-sm font-semibold uppercase tracking-wider text-iron mb-4">
-                          Problems This Solves
+                          What&apos;s Holding You Back
                         </h3>
                         <ul className="space-y-3">
                           {service.problemsSolved.split(". ").filter(Boolean).map((problem) => (
@@ -69,7 +69,7 @@ export default function ServicesPage() {
                       </div>
                       <div className="rounded-2xl border border-bondi/20 bg-bondi/5 p-6 sm:p-8">
                         <h3 className="text-sm font-semibold uppercase tracking-wider text-bondi mb-4">
-                          What You Get
+                          The Payoff
                         </h3>
                         <ul className="space-y-3">
                           {service.benefits.split(". ").filter(Boolean).map((benefit) => (

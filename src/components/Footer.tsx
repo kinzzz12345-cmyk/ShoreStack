@@ -40,10 +40,11 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 "Website Design",
+                "Website Redesign",
                 "SaaS Development",
                 "Real Estate Platforms",
+                "Asset Management",
                 "Booking Systems",
-                "Website Redesign",
                 "Local SEO",
               ].map((item) => (
                 <li key={item}>
