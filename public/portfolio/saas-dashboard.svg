@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none">
+  <rect width="640" height="400" fill="#0f1729"/>
+
+  <!-- Grid background -->
+  <g stroke="#1985a1" stroke-width="0.5" opacity="0.08">
+    <line x1="0" y1="50" x2="640" y2="50"/><line x1="0" y1="100" x2="640" y2="100"/>
+    <line x1="0" y1="150" x2="640" y2="150"/><line x1="0" y1="200" x2="640" y2="200"/>
+    <line x1="0" y1="250" x2="640" y2="250"/><line x1="0" y1="300" x2="640" y2="300"/>
+    <line x1="0" y1="350" x2="640" y2="350"/>
+    <line x1="80" y1="0" x2="80" y2="400"/><line x1="160" y1="0" x2="160" y2="400"/>
+    <line x1="240" y1="0" x2="240" y2="400"/><line x1="320" y1="0" x2="320" y2="400"/>
+    <line x1="400" y1="0" x2="400" y2="400"/><line x1="480" y1="0" x2="480" y2="400"/>
+    <line x1="560" y1="0" x2="560" y2="400"/>
+  </g>
+
+  <!-- Sidebar -->
+  <rect x="30" y="30" width="160" height="340" rx="12" fill="#1a2744" opacity="0.9"/>
+  <rect x="48" y="55" width="80" height="8" rx="4" fill="#1985a1" opacity="0.8"/>
+  <rect x="48" y="90" width="120" height="6" rx="3" fill="#ffffff" opacity="0.15"/>
+  <rect x="48" y="110" width="110" height="6" rx="3" fill="#ffffff" opacity="0.1"/>
+  <rect x="48" y="130" width="100" height="6" rx="3" fill="#1985a1" opacity="0.4"/>
+  <rect x="48" y="150" width="120" height="6" rx="3" fill="#ffffff" opacity="0.1"/>
+  <rect x="48" y="170" width="90" height="6" rx="3" fill="#ffffff" opacity="0.1"/>
+  <rect x="48" y="190" width="115" height="6" rx="3" fill="#ffffff" opacity="0.1"/>
+
+  <!-- Main content area -->
+  <!-- Stats cards -->
+  <rect x="210" y="30" width="130" height="70" rx="8" fill="#1a2744" opacity="0.9"/>
+  <rect x="228" y="50" width="50" height="6" rx="3" fill="#ffffff" opacity="0.2"/>
+  <text x="228" y="80" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#1985a1" opacity="0.9">$48.2K</text>
+
+  <rect x="355" y="30" width="130" height="70" rx="8" fill="#1a2744" opacity="0.9"/>
+  <rect x="373" y="50" width="50" height="6" rx="3" fill="#ffffff" opacity="0.2"/>
+  <text x="373" y="80" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#27c93f" opacity="0.9">+24%</text>
+
+  <rect x="500" y="30" width="110" height="70" rx="8" fill="#1a2744" opacity="0.9"/>
+  <rect x="518" y="50" width="50" height="6" rx="3" fill="#ffffff" opacity="0.2"/>
+  <text x="518" y="80" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#ffb347" opacity="0.9">1,847</text>
+
+  <!-- Chart area -->
+  <rect x="210" y="115" width="400" height="180" rx="8" fill="#1a2744" opacity="0.9"/>
+  <rect x="230" y="135" width="60" height="6" rx="3" fill="#ffffff" opacity="0.2"/>
+
+  <!-- Line chart -->
+  <polyline points="240,260 280,245 320,255 360,220 400,235 440,195 480,210 520,180 560,175 580,185"
+    stroke="#1985a1" stroke-width="2.5" fill="none" opacity="0.9"/>
+  <path d="M240,260 L280,245 L320,255 L360,220 L400,235 L440,195 L480,210 L520,180 L560,175 L580,185 L580,275 L240,275 Z"
+    fill="#1985a1" opacity="0.1"/>
+
+  <!-- Chart dots -->
+  <circle cx="360" cy="220" r="4" fill="#1985a1"/><circle cx="440" cy="195" r="4" fill="#1985a1"/>
+  <circle cx="560" cy="175" r="4" fill="#1985a1"/>
+
+  <!-- Bottom table -->
+  <rect x="210" y="310" width="400" height="60" rx="8" fill="#1a2744" opacity="0.9"/>
+  <rect x="230" y="325" width="360" height="4" rx="2" fill="#ffffff" opacity="0.08"/>
+  <rect x="230" y="340" width="80" height="4" rx="2" fill="#ffffff" opacity="0.12"/>
+  <rect x="340" y="340" width="60" height="4" rx="2" fill="#1985a1" opacity="0.4"/>
+  <rect x="430" y="340" width="40" height="4" rx="2" fill="#27c93f" opacity="0.4"/>
+  <rect x="500" y="340" width="70" height="4" rx="2" fill="#ffffff" opacity="0.1"/>
+  <rect x="230" y="355" width="70" height="4" rx="2" fill="#ffffff" opacity="0.1"/>
+  <rect x="340" y="355" width="50" height="4" rx="2" fill="#1985a1" opacity="0.3"/>
+  <rect x="430" y="355" width="45" height="4" rx="2" fill="#ffb347" opacity="0.4"/>
+  <rect x="500" y="355" width="60" height="4" rx="2" fill="#ffffff" opacity="0.08"/>
+</svg>

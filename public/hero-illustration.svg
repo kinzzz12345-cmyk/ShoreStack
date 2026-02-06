@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 500" fill="none">
+  <!-- Background shapes -->
+  <rect x="80" y="60" width="440" height="300" rx="20" fill="#4c5c68" opacity="0.08"/>
+
+  <!-- Browser window -->
+  <rect x="120" y="40" width="360" height="240" rx="12" fill="#ffffff" stroke="#dcdcdd" stroke-width="2"/>
+  <rect x="120" y="40" width="360" height="36" rx="12" fill="#46494c"/>
+  <rect x="120" y="64" width="360" height="12" fill="#46494c"/>
+  <circle cx="140" cy="58" r="6" fill="#ff5f56"/>
+  <circle cx="160" cy="58" r="6" fill="#ffbd2e"/>
+  <circle cx="180" cy="58" r="6" fill="#27c93f"/>
+
+  <!-- Browser content - website mockup -->
+  <rect x="136" y="92" width="120" height="8" rx="4" fill="#1985a1"/>
+  <rect x="136" y="112" width="200" height="6" rx="3" fill="#dcdcdd"/>
+  <rect x="136" y="126" width="180" height="6" rx="3" fill="#dcdcdd"/>
+  <rect x="136" y="140" width="160" height="6" rx="3" fill="#dcdcdd"/>
+  <rect x="136" y="162" width="80" height="24" rx="6" fill="#1985a1"/>
+  <rect x="136" y="200" width="100" height="60" rx="6" fill="#dcdcdd"/>
+  <rect x="248" y="200" width="100" height="60" rx="6" fill="#dcdcdd"/>
+  <rect x="360" y="200" width="100" height="60" rx="6" fill="#dcdcdd"/>
+
+  <!-- Phone mockup -->
+  <rect x="400" y="160" width="140" height="260" rx="16" fill="#ffffff" stroke="#c5c3c6" stroke-width="2"/>
+  <rect x="400" y="160" width="140" height="260" rx="16" fill="#ffffff"/>
+  <rect x="400" y="160" width="140" height="30" rx="16" fill="#46494c"/>
+  <rect x="400" y="178" width="140" height="12" fill="#46494c"/>
+  <circle cx="470" cy="175" r="4" fill="#4c5c68"/>
+
+  <!-- Phone content -->
+  <rect x="416" y="202" width="80" height="6" rx="3" fill="#1985a1"/>
+  <rect x="416" y="218" width="108" height="4" rx="2" fill="#dcdcdd"/>
+  <rect x="416" y="228" width="100" height="4" rx="2" fill="#dcdcdd"/>
+  <rect x="416" y="244" width="60" height="18" rx="4" fill="#1985a1"/>
+  <rect x="416" y="274" width="108" height="50" rx="4" fill="#dcdcdd"/>
+  <rect x="416" y="336" width="108" height="50" rx="4" fill="#dcdcdd"/>
+
+  <!-- Floating elements -->
+  <circle cx="80" cy="180" r="30" fill="#1985a1" opacity="0.1"/>
+  <circle cx="560" cy="100" r="20" fill="#1985a1" opacity="0.15"/>
+
+  <!-- Code bracket decoration -->
+  <text x="60" y="320" font-family="monospace" font-size="48" fill="#1985a1" opacity="0.2">&lt;/&gt;</text>
+
+  <!-- Stack bars decoration -->
+  <rect x="520" y="300" width="40" height="12" rx="3" fill="#1985a1" opacity="0.15"/>
+  <rect x="520" y="320" width="55" height="12" rx="3" fill="#1985a1" opacity="0.2"/>
+  <rect x="520" y="340" width="35" height="12" rx="3" fill="#1985a1" opacity="0.25"/>
+  <rect x="520" y="360" width="50" height="12" rx="3" fill="#1985a1" opacity="0.15"/>
+
+  <!-- Connection dots -->
+  <circle cx="100" cy="400" r="4" fill="#1985a1" opacity="0.3"/>
+  <circle cx="120" cy="420" r="4" fill="#1985a1" opacity="0.2"/>
+  <circle cx="90" cy="430" r="4" fill="#1985a1" opacity="0.15"/>
+</svg>

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" fill="none">
+  <rect width="640" height="400" fill="#faf5f0"/>
+
+  <!-- Soft decorative circles -->
+  <circle cx="100" cy="80" r="100" fill="#e8c4c4" opacity="0.15"/>
+  <circle cx="540" cy="320" r="120" fill="#e8c4c4" opacity="0.1"/>
+
+  <!-- Hand silhouette -->
+  <g transform="translate(160, 60)">
+    <!-- Palm -->
+    <ellipse cx="160" cy="210" rx="70" ry="85" fill="#f0d5c0" opacity="0.8"/>
+
+    <!-- Fingers -->
+    <rect x="90" y="100" width="28" height="110" rx="14" fill="#f0d5c0" opacity="0.8" transform="rotate(-8 90 100)"/>
+    <rect x="125" y="70" width="28" height="140" rx="14" fill="#f0d5c0" opacity="0.85"/>
+    <rect x="162" y="60" width="28" height="150" rx="14" fill="#f0d5c0" opacity="0.85"/>
+    <rect x="198" y="75" width="28" height="135" rx="14" fill="#f0d5c0" opacity="0.8"/>
+    <rect x="228" y="120" width="26" height="90" rx="13" fill="#f0d5c0" opacity="0.75" transform="rotate(15 228 120)"/>
+
+    <!-- Painted nails -->
+    <ellipse cx="99" cy="100" rx="12" ry="14" fill="#c2185b" opacity="0.85" transform="rotate(-8 99 100)"/>
+    <ellipse cx="139" cy="70" rx="12" ry="14" fill="#c2185b" opacity="0.85"/>
+    <ellipse cx="176" cy="60" rx="12" ry="14" fill="#c2185b" opacity="0.85"/>
+    <ellipse cx="212" cy="76" rx="12" ry="14" fill="#c2185b" opacity="0.85"/>
+    <ellipse cx="240" cy="118" rx="11" ry="13" fill="#c2185b" opacity="0.8" transform="rotate(15 240 118)"/>
+
+    <!-- Nail shine -->
+    <ellipse cx="97" cy="95" rx="3" ry="5" fill="#ffffff" opacity="0.5" transform="rotate(-8 97 95)"/>
+    <ellipse cx="137" cy="65" rx="3" ry="5" fill="#ffffff" opacity="0.5"/>
+    <ellipse cx="174" cy="55" rx="3" ry="5" fill="#ffffff" opacity="0.5"/>
+    <ellipse cx="210" cy="71" rx="3" ry="5" fill="#ffffff" opacity="0.5"/>
+  </g>
+
+  <!-- Nail polish bottle -->
+  <g transform="translate(440, 120)">
+    <rect x="0" y="40" width="50" height="100" rx="8" fill="#c2185b" opacity="0.8"/>
+    <rect x="10" y="0" width="30" height="48" rx="4" fill="#4c5c68" opacity="0.6"/>
+    <rect x="5" y="38" width="40" height="8" rx="2" fill="#4c5c68" opacity="0.5"/>
+    <!-- Shine on bottle -->
+    <rect x="35" y="55" width="6" height="60" rx="3" fill="#ffffff" opacity="0.2"/>
+  </g>
+
+  <!-- Flower decorations -->
+  <g transform="translate(80, 260)" opacity="0.3">
+    <circle cx="0" cy="0" r="8" fill="#e8c4c4"/>
+    <circle cx="12" cy="-8" r="8" fill="#e8c4c4"/>
+    <circle cx="12" cy="8" r="8" fill="#e8c4c4"/>
+    <circle cx="-4" cy="12" r="8" fill="#e8c4c4"/>
+    <circle cx="-4" cy="-12" r="8" fill="#e8c4c4"/>
+    <circle cx="4" cy="0" r="5" fill="#ffb6c1"/>
+  </g>
+
+  <g transform="translate(530, 100)" opacity="0.25">
+    <circle cx="0" cy="0" r="6" fill="#e8c4c4"/>
+    <circle cx="10" cy="-6" r="6" fill="#e8c4c4"/>
+    <circle cx="10" cy="6" r="6" fill="#e8c4c4"/>
+    <circle cx="-3" cy="9" r="6" fill="#e8c4c4"/>
+    <circle cx="-3" cy="-9" r="6" fill="#e8c4c4"/>
+    <circle cx="3" cy="0" r="4" fill="#ffb6c1"/>
+  </g>
+
+  <!-- Sparkles -->
+  <g fill="#c2185b" opacity="0.3">
+    <path d="M520 200 l3-8 3 8-8-3 8-3z"/>
+    <path d="M100 170 l2-6 2 6-6-2 6-2z"/>
+    <path d="M560 160 l2-6 2 6-6-2 6-2z"/>
+  </g>
+
+  <!-- Text label -->
+  <text x="320" y="375" font-family="Arial,sans-serif" font-size="13" fill="#4c5c68" text-anchor="middle" letter-spacing="4" opacity="0.6">NAIL SALON</text>
+</svg>
