@@ -90,7 +90,7 @@ export default function ContactForm() {
           id="phone"
           name="phone"
           className="w-full rounded-lg border border-dust bg-white px-4 py-3 text-sm text-iron placeholder-silver focus:border-bondi focus:ring-2 focus:ring-bondi/20 outline-none transition-all"
-          placeholder="(555) 000-0000"
+          placeholder="(240) 442-8990"
         />
       </div>
       <div>
