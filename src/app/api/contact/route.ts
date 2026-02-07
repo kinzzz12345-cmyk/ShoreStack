@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 
 export async function POST(request: Request) {
   try {
@@ -60,7 +59,7 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    /* ── Send via Resend ── */
+    /* ── Send via Resend REST API (no npm package needed) ── */
     const apiKey = process.env.RESEND_API_KEY;
     const contactTo = process.env.CONTACT_EMAIL || "shorestack@gmail.com";
 
@@ -78,18 +77,24 @@ export async function POST(request: Request) {
       );
     }
 
-    const resend = new Resend(apiKey);
-
-    const { error } = await resend.emails.send({
-      from: "ShoreStack Contact <onboarding@resend.dev>",
-      replyTo: email,
-      to: [contactTo],
-      subject: `New inquiry from ${name} — ShoreStack`,
-      html: htmlBody,
+    const resendResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "ShoreStack Contact <onboarding@resend.dev>",
+        reply_to: email,
+        to: [contactTo],
+        subject: `New inquiry from ${name} — ShoreStack`,
+        html: htmlBody,
+      }),
     });
 
-    if (error) {
-      console.error("Resend API error:", error);
+    if (!resendResponse.ok) {
+      const errorData = await resendResponse.json();
+      console.error("Resend API error:", errorData);
       return NextResponse.json(
         { error: "Failed to send your message. Please try again or email us directly." },
         { status: 500 }
