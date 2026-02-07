@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 export async function POST(request: Request) {
   try {
@@ -60,37 +60,17 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    const textBody = [
-      `New Contact Form Submission — ${timestamp}`,
-      ``,
-      `Name:    ${name}`,
-      `Email:   ${email}`,
-      `Phone:   ${phoneLabel}`,
-      `Service: ${serviceLabel}`,
-      ``,
-      `Message:`,
-      message,
-    ].join("\n");
-
-    /* ── Send via SMTP ── */
-    const smtpHost = process.env.SMTP_HOST;
-    const smtpPort = Number(process.env.SMTP_PORT || "587");
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
+    /* ── Send via Resend ── */
+    const apiKey = process.env.RESEND_API_KEY;
     const contactTo = process.env.CONTACT_EMAIL || "k.patelsoftwaredeveloper@gmail.com";
 
-    if (!smtpHost || !smtpUser || !smtpPass) {
+    if (!apiKey) {
       console.error(
-        "Email not configured — SMTP_HOST, SMTP_USER, and SMTP_PASS environment variables are required. " +
+        "Email not configured — RESEND_API_KEY environment variable is required. " +
         "Submission was received but no email was sent.",
       );
       console.log("Contact form submission (email not sent):", {
-        name,
-        email,
-        phone: phoneLabel,
-        service: serviceLabel,
-        message,
-        timestamp,
+        name, email, phone: phoneLabel, service: serviceLabel, message, timestamp,
       });
       return NextResponse.json(
         { error: "Email service is not configured. Please contact us directly." },
@@ -98,24 +78,23 @@ export async function POST(request: Request) {
       );
     }
 
-    const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: smtpPort,
-      secure: smtpPort === 465,
-      auth: {
-        user: smtpUser,
-        pass: smtpPass,
-      },
-    });
+    const resend = new Resend(apiKey);
 
-    await transporter.sendMail({
-      from: `"ShoreStack Contact" <${smtpUser}>`,
+    const { error } = await resend.emails.send({
+      from: "ShoreStack Contact <onboarding@resend.dev>",
       replyTo: email,
-      to: contactTo,
+      to: [contactTo],
       subject: `New inquiry from ${name} — ShoreStack`,
-      text: textBody,
       html: htmlBody,
     });
+
+    if (error) {
+      console.error("Resend API error:", error);
+      return NextResponse.json(
+        { error: "Failed to send your message. Please try again or email us directly." },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json(
       { success: true, message: "Thank you for reaching out. We will get back to you within 24 hours." },
