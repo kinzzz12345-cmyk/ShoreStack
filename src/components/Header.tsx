@@ -23,7 +23,7 @@ export default function Header() {
         <div className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
-            <span className="text-xl font-bold tracking-tight text-iron font-[family-name:var(--font-heading)]">
+            <span className="text-3xl font-bold tracking-tight text-iron font-[family-name:var(--font-heading)]">
               Shore<span className="text-bondi">Stack</span>
             </span>
           </Link>
