@@ -5,10 +5,12 @@ import { useState, type FormEvent } from "react";
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
+    setError(null);
 
     const form = e.currentTarget;
     const data = {
@@ -20,17 +22,26 @@ export default function ContactForm() {
     };
 
     try {
-      await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+
+      const result = await res.json();
+
+      if (!res.ok) {
+        setError(result.error || "Something went wrong. Please try again.");
+        setLoading(false);
+        return;
+      }
+
+      setSubmitted(true);
     } catch {
-      // Silently handle — form still shows success to the user
+      setError("Unable to send your message. Please try again or email us directly.");
     }
 
     setLoading(false);
-    setSubmitted(true);
   }
 
   if (submitted) {
@@ -53,6 +64,11 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
+      {error && (
+        <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          {error}
+        </div>
+      )}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-iron mb-1.5">
@@ -103,14 +119,14 @@ export default function ContactForm() {
           className="w-full rounded-lg border border-dust bg-white px-4 py-3 text-sm text-iron focus:border-bondi focus:ring-2 focus:ring-bondi/20 outline-none transition-all"
         >
           <option value="">Select a service</option>
-          <option value="website-design">Custom Website Design and Development</option>
-          <option value="saas">Full SaaS Architecture and Development</option>
-          <option value="real-estate">Multi Tenant Real Estate Platforms</option>
-          <option value="asset-management">Asset and Inventory Management Applications</option>
-          <option value="booking">Online Booking Systems</option>
-          <option value="redesign">Website Redesign for Outdated Sites</option>
-          <option value="seo">Local SEO Setup</option>
-          <option value="other">Other</option>
+          <option value="Custom Website Design and Development">Custom Website Design and Development</option>
+          <option value="Website Redesign for Outdated Sites">Website Redesign for Outdated Sites</option>
+          <option value="Full SaaS Architecture and Development">Full SaaS Architecture and Development</option>
+          <option value="Multi Tenant Real Estate Platforms">Multi Tenant Real Estate Platforms</option>
+          <option value="Asset and Inventory Management Applications">Asset and Inventory Management Applications</option>
+          <option value="Online Booking Systems">Online Booking Systems</option>
+          <option value="Local SEO Setup">Local SEO Setup</option>
+          <option value="Other">Other</option>
         </select>
       </div>
       <div>
