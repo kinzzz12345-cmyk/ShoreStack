@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
           {/* Brand */}
           <div className="md:col-span-1">
-            <Link href="/" className="text-xl font-bold tracking-tight font-[family-name:var(--font-heading)]">
+            <Link href="/" className="text-3xl font-bold tracking-tight font-[family-name:var(--font-heading)]">
               Shore<span className="text-bondi">Stack</span>
             </Link>
             <p className="mt-4 text-sm text-silver leading-relaxed">
