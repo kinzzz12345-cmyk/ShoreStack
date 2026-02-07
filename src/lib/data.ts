@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "ShoreStack",
   tagline: "Clean Design. Powerful Systems. One Partner.",
-  email: "k.patelsoftwaredeveloper@gmail.com",
+  email: "shorestack@gmail.com",
   phone: "(240) 442-8990",
   url: "https://shorestack.com",
   description:

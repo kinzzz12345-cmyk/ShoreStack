@@ -62,7 +62,7 @@ export async function POST(request: Request) {
 
     /* ── Send via Resend ── */
     const apiKey = process.env.RESEND_API_KEY;
-    const contactTo = process.env.CONTACT_EMAIL || "k.patelsoftwaredeveloper@gmail.com";
+    const contactTo = process.env.CONTACT_EMAIL || "shorestack@gmail.com";
 
     if (!apiKey) {
       console.error(
