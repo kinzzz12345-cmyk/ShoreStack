@@ -119,7 +119,7 @@ export async function POST(request: Request) {
         "Submission was received but no email was sent.",
       );
       console.log("Contact form submission (email not sent):", {
-        name, email, phone: phoneLabel, service: serviceLabel, message, timestamp,
+        contactName, contactEmail, contactPhone, businessName, businessType, timestamp,
       });
       return NextResponse.json(
         { error: "Email service is not configured. Please contact us directly." },
