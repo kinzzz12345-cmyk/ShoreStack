@@ -3,8 +3,8 @@
 @theme {
   --color-primary: #2C3E50;
   --color-bg: #F4F5F7;
-  --color-accent: #2A9D8F;
-  --color-accent-dark: #228578;
+  --color-accent: #228578;
+  --color-accent-dark: #1B6B60;
   --color-attention: #E9C46A;
   --color-text: #1F2933;
   --color-text-light: #4A5568;
@@ -95,20 +95,6 @@ h1, h2, h3, h4, h5, h6 {
 p {
   width: 100%;
   max-width: 100%;
-}
-
-/* Tablet */
-@media (min-width: 640px) {
-  p {
-    max-width: 42rem; /* ~max-w-2xl */
-  }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-  p {
-    max-width: 48rem; /* ~max-w-3xl */
-  }
 }
 
 

@@ -223,7 +223,7 @@ export default function HomePage() {
                         opacity: val <= 50 ? 1 : 0.3 + 0.7 * ((100 - val) / 100),
                       }}
                     >
-                      <p className="text-[12px] font-semibold text-red-600 mb-1">Before</p>
+                      <p className="text-[12px] font-semibold text-red-800 mb-1">Before</p>
                       <p className="text-[14px] text-text">{outcome.before}</p>
                     </div>
                     <div
@@ -299,7 +299,7 @@ export default function HomePage() {
           <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
             {operationalStories.map((story) => (
               <div key={story.id} className="rounded-xl border border-border bg-white p-6 flex flex-col">
-                <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-accent bg-accent/10 rounded-full px-3 py-1 w-fit mb-4">
+                <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-accent-dark bg-accent/10 rounded-full px-3 py-1 w-fit mb-4">
                   <ClockIcon className="w-3 h-3" />
                   Saved {story.saved}
                 </span>
@@ -328,7 +328,7 @@ export default function HomePage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white">
             Ready to save time and money?
           </h2>
-          <p className="mt-3 text-white/70 mx-auto max-w-lg">
+          <p className="mt-3 text-white/80 mx-auto max-w-lg">
             Tell us about your business in a few minutes. We review it before we talk so you do not have to explain everything twice. No cost, no obligation.
           </p>
           <div className="mt-6">
