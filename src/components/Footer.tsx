@@ -4,66 +4,54 @@ import { EnvelopeIcon, PhoneIcon } from "./Icons";
 
 export default function Footer() {
   return (
-    <footer className="bg-iron text-dust">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
-          {/* Brand */}
-          <div className="md:col-span-1">
-            <Link href="/" className="text-3xl font-bold tracking-tight font-[family-name:var(--font-heading)]">
-              Shore<span className="text-bondi">Stack</span>
+    <footer className="bg-primary text-white/80">
+      <div className="mx-auto max-w-5xl px-[16px] sm:px-[28px] py-[44px]">
+        <div className="grid grid-cols-1 gap-[28px] md:grid-cols-3">
+          <div>
+            <Link
+              href="/"
+              className="text-xl font-semibold tracking-tight text-white font-[family-name:var(--font-heading)]"
+            >
+              ShoreStack
             </Link>
-            <p className="mt-4 text-sm text-silver leading-relaxed">
+            <p className="mt-[8px] text-[15px] leading-relaxed text-white/60">
               {siteConfig.tagline}
             </p>
           </div>
 
-          {/* Quick links */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">Navigation</h3>
-            <ul className="space-y-3">
-              {["Home", "Services", "Portfolio", "About", "Contact"].map((item) => (
-                <li key={item}>
-                  <Link
-                    href={item === "Home" ? "/" : `/${item.toLowerCase()}`}
-                    className="text-sm text-silver hover:text-bondi transition-colors"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">Services</h3>
-            <ul className="space-y-3">
+            <h3 className="text-[14px] font-semibold uppercase tracking-wider text-white mb-[16px]">
+              Navigation
+            </h3>
+            <ul className="space-y-[8px]">
               {[
-                "Website Design",
-                "Website Redesign",
-                "SaaS Development",
-                "Real Estate Platforms",
-                "Asset Management",
-                "Booking Systems",
-                "Local SEO",
+                { label: "Home", href: "/" },
+                { label: "Solutions", href: "/solutions" },
+                { label: "Examples", href: "/examples" },
+                { label: "About", href: "/about" },
+                { label: "Start", href: "/start" },
               ].map((item) => (
-                <li key={item}>
-                  <Link href="/services" className="text-sm text-silver hover:text-bondi transition-colors">
-                    {item}
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-[15px] text-white/60 hover:text-white transition-colors duration-[120ms]"
+                  >
+                    {item.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-white mb-4">Contact</h3>
-            <ul className="space-y-3">
+            <h3 className="text-[14px] font-semibold uppercase tracking-wider text-white mb-[16px]">
+              Contact
+            </h3>
+            <ul className="space-y-[8px]">
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="flex items-center gap-2 text-sm text-silver hover:text-bondi transition-colors"
+                  className="flex items-center gap-2 text-[15px] text-white/60 hover:text-white transition-colors duration-[120ms]"
                 >
                   <EnvelopeIcon className="w-4 h-4" />
                   {siteConfig.email}
@@ -72,28 +60,27 @@ export default function Footer() {
               <li>
                 <a
                   href={`tel:${siteConfig.phone}`}
-                  className="flex items-center gap-2 text-sm text-silver hover:text-bondi transition-colors"
+                  className="flex items-center gap-2 text-[15px] text-white/60 hover:text-white transition-colors duration-[120ms]"
                 >
                   <PhoneIcon className="w-4 h-4" />
                   {siteConfig.phone}
                 </a>
               </li>
             </ul>
-            <div className="mt-6">
-              <Link
-                href="/contact"
-                className="inline-block rounded-lg bg-bondi px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-bondi-dark"
-              >
-                Get a Free Preview
-              </Link>
-            </div>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-slate-blue/30 pt-8 text-center">
-          <p className="text-sm text-silver">
-            &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
-          </p>
+        <div className="mt-[44px] border-t border-white/10 pt-[28px]">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-[16px] text-[13px] text-white/40">
+            <p>&copy; {new Date().getFullYear()} {siteConfig.name}</p>
+            <div className="flex flex-wrap gap-x-[28px] gap-y-[8px]">
+              <span>{siteConfig.workingHours}</span>
+              <span>{siteConfig.timezone}</span>
+              <span>Response: {siteConfig.avgResponseTime}</span>
+              <span>Updated: {siteConfig.lastUpdated}</span>
+              <span>v{siteConfig.version}</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

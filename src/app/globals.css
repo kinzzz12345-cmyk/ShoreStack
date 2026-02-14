@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-dust: #dcdcdd;
-  --color-silver: #c5c3c6;
-  --color-iron: #46494c;
-  --color-slate-blue: #4c5c68;
-  --color-bondi: #1985a1;
-  --color-bondi-dark: #14697f;
-  --color-bondi-light: #1d9bbe;
+  --color-primary: #2C3E50;
+  --color-bg: #F4F5F7;
+  --color-accent: #2A9D8F;
+  --color-attention: #E9C46A;
+  --color-text: #1F2933;
+  --color-text-light: #4A5568;
+  --color-border: #D1D5DB;
+  --color-white: #FFFFFF;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-heading: "Poppins", ui-sans-serif, system-ui, sans-serif;
@@ -19,26 +20,85 @@ html {
 
 body {
   font-family: var(--font-sans);
-  color: var(--color-iron);
-  background-color: #ffffff;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }
 
 ::selection {
-  background-color: var(--color-bondi);
-  color: #ffffff;
+  background-color: var(--color-accent);
+  color: var(--color-white);
 }
 
-@keyframes popup {
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+}
+
+p {
+  max-width: 65ch;
+}
+
+/* Spacing rhythm: 8 / 16 / 28 / 44 / 72 */
+
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background-color: var(--color-accent);
+  z-index: 100;
+  transition: width 50ms linear;
+}
+
+/* Section reveal animation */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 200ms ease-out, transform 200ms ease-out;
+}
+
+.section-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hover elevation */
+.hover-elevate {
+  transition: box-shadow 120ms ease-out, transform 120ms ease-out;
+}
+
+.hover-elevate:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Expand animation */
+.expand-enter {
+  transition: max-height 180ms ease-out, opacity 180ms ease-out;
+}
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Wizard step transition */
+.wizard-step {
+  animation: fadeIn 180ms ease-out;
+}
+
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: scale(0.95) translateY(12px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translateY(0);
   }
-}
-
-.animate-popup {
-  animation: popup 0.3s ease-out;
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FirstVisitPopup from "@/components/FirstVisitPopup";
 import { siteConfig } from "@/lib/data";
 import "./globals.css";
 
@@ -12,20 +11,14 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "web development",
-    "SaaS development",
-    "custom website design",
-    "real estate platform",
-    "asset management",
-    "inventory management",
+    "small business software",
+    "business operations",
+    "custom software",
     "booking system",
-    "website redesign",
-    "local SEO",
-    "full stack developer",
-    "mobile first design",
-    "party decorator tools",
-    "tool rental software",
-    "community event management",
+    "task management",
+    "workflow automation",
+    "solo developer",
+    "business simplification",
   ],
   authors: [{ name: siteConfig.name }],
   icons: {
@@ -80,9 +73,8 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col antialiased">
         <Header />
-        <main className="flex-1 pt-16 md:pt-20">{children}</main>
+        <main className="flex-1 pt-[60px]">{children}</main>
         <Footer />
-        <FirstVisitPopup />
       </body>
     </html>
   );
