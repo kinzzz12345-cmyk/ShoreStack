@@ -18,7 +18,6 @@ export default function HomePage() {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
   const [checkedSymptoms, setCheckedSymptoms] = useState<Set<string>>(new Set());
   const [activeStep, setActiveStep] = useState<string>("observe");
-  const [outcomeSliders, setOutcomeSliders] = useState<Record<string, number>>({});
 
   const selectedCardData = identificationCards.find((c) => c.id === selectedCard);
   const checkedCount = checkedSymptoms.size;
@@ -32,13 +31,6 @@ export default function HomePage() {
     });
   }
 
-  function getSliderValue(id: string) {
-    return outcomeSliders[id] ?? 50;
-  }
-
-  function setSliderValue(id: string, value: number) {
-    setOutcomeSliders((prev) => ({ ...prev, [id]: value }));
-  }
 
   const activeStepData = howIWorkSteps.find((s) => s.id === activeStep);
 
@@ -197,49 +189,25 @@ export default function HomePage() {
             What changes look like
           </h2>
           <p className="mt-2 text-text-light">
-            Drag the slider to compare before and after for each area.
+            Real before-and-after comparisons from areas we help with every day.
           </p>
 
-          <div className="mt-6 space-y-6">
-            {outcomes.map((outcome) => {
-              const val = getSliderValue(outcome.id);
-              return (
-                <div key={outcome.id} className="rounded-xl border border-border bg-white p-6">
-                  <h3 className="text-[15px] font-semibold text-primary mb-4">{outcome.area}</h3>
-                  <input
-                    type="range"
-                    min={0}
-                    max={100}
-                    value={val}
-                    onChange={(e) => setSliderValue(outcome.id, Number(e.target.value))}
-                    className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-accent bg-border"
-                    aria-label={`Compare before and after for ${outcome.area}`}
-                  />
-                  <div className="mt-4 grid grid-cols-2 gap-4">
-                    <div
-                      className="rounded-lg p-4 transition-opacity duration-[180ms]"
-                      style={{
-                        backgroundColor: "rgba(239, 68, 68, 0.05)",
-                        opacity: val <= 50 ? 1 : 0.3 + 0.7 * ((100 - val) / 100),
-                      }}
-                    >
-                      <p className="text-[12px] font-semibold text-red-800 mb-1">Before</p>
-                      <p className="text-[14px] text-text">{outcome.before}</p>
-                    </div>
-                    <div
-                      className="rounded-lg p-4 transition-opacity duration-[180ms]"
-                      style={{
-                        backgroundColor: "rgba(42, 157, 143, 0.05)",
-                        opacity: val >= 50 ? 1 : 0.3 + 0.7 * (val / 100),
-                      }}
-                    >
-                      <p className="text-[12px] font-semibold text-accent mb-1">After</p>
-                      <p className="text-[14px] text-text">{outcome.after}</p>
-                    </div>
+          <div className="mt-6 space-y-4">
+            {outcomes.map((outcome) => (
+              <div key={outcome.id} className="rounded-xl border border-border bg-white p-5">
+                <h3 className="text-[15px] font-semibold text-primary mb-3">{outcome.area}</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="rounded-lg border border-red-200 bg-red-50/50 p-4">
+                    <p className="text-[12px] font-semibold text-red-700 uppercase tracking-wider mb-1">Before</p>
+                    <p className="text-[14px] text-text leading-relaxed">{outcome.before}</p>
+                  </div>
+                  <div className="rounded-lg border border-accent/30 bg-accent/5 p-4">
+                    <p className="text-[12px] font-semibold text-accent uppercase tracking-wider mb-1">After</p>
+                    <p className="text-[14px] text-text leading-relaxed">{outcome.after}</p>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </SectionReveal>
