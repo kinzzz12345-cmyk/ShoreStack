@@ -18,8 +18,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-7 md:grid-cols-4">
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center gap-2 text-white">
-              <ShoreStackLogo className="w-7 h-7" />
-              <span className="text-lg font-semibold tracking-tight font-[family-name:var(--font-heading)]">
+              <ShoreStackLogo className="w-8 h-8" />
+              <span className="text-xl font-semibold tracking-tight font-[family-name:var(--font-heading)]">
                 ShoreStack
               </span>
             </Link>
