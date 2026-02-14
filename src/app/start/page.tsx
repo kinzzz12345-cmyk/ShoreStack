@@ -443,10 +443,10 @@ export default function StartPage() {
           <button
             onClick={goNext}
             disabled={!canProceed() || submitting}
-            className={`inline-flex items-center gap-1 rounded-xl px-6 py-3 text-[15px] font-semibold text-white transition-all duration-[120ms] ${
+            className={`inline-flex items-center gap-1 rounded-xl px-6 py-3 text-[15px] font-semibold transition-all duration-[120ms] ${
               canProceed() && !submitting
-                ? "bg-accent hover:bg-accent-dark hover:shadow-lg"
-                : "bg-border cursor-not-allowed"
+                ? "bg-accent text-white hover:bg-accent-dark hover:shadow-lg"
+                : "bg-accent/10 text-accent/50 cursor-not-allowed"
             }`}
           >
             {submitting ? "Submitting..." : step === totalSteps ? "Submit" : "Continue"}
