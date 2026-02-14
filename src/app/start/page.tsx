@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { wizardSteps } from "@/lib/data";
 import { ChevronLeftIcon, ChevronRightIcon, CheckIcon, ClockIcon } from "@/components/Icons";
 
@@ -57,6 +57,7 @@ const inquirySteps = [
 ];
 
 export default function StartPage() {
+  const formTopRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState(1);
   const [businessType, setBusinessType] = useState<string | null>(null);
   const [frustrations, setFrustrations] = useState<Set<string>>(new Set());
@@ -139,13 +140,24 @@ export default function StartPage() {
     }
   }
 
+  function scrollToForm() {
+    formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   function goNext() {
-    if (step < totalSteps) setStep(step + 1);
-    else handleSubmit();
+    if (step < totalSteps) {
+      setStep(step + 1);
+      scrollToForm();
+    } else {
+      handleSubmit();
+    }
   }
 
   function goBack() {
-    if (step > 1) setStep(step - 1);
+    if (step > 1) {
+      setStep(step - 1);
+      scrollToForm();
+    }
   }
 
   function resetForm() {
@@ -216,7 +228,7 @@ export default function StartPage() {
         </p>
 
         {/* Progress bar */}
-        <div className="mt-6 flex gap-1">
+        <div ref={formTopRef} className="mt-6 flex gap-1">
           {Array.from({ length: totalSteps }, (_, i) => (
             <div
               key={i}
