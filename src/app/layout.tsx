@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FirstVisitPopup from "@/components/FirstVisitPopup";
+import MobileCTA from "@/components/MobileCTA";
 import { siteConfig } from "@/lib/data";
 import "./globals.css";
 
@@ -12,20 +13,16 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "web development",
-    "SaaS development",
-    "custom website design",
-    "real estate platform",
-    "asset management",
-    "inventory management",
+    "small business software",
+    "affordable business software",
+    "business operations",
+    "custom software",
     "booking system",
-    "website redesign",
-    "local SEO",
-    "full stack developer",
-    "mobile first design",
-    "party decorator tools",
-    "tool rental software",
-    "community event management",
+    "task management",
+    "workflow automation",
+    "Maryland software developer",
+    "budget friendly software",
+    "save time and money",
   ],
   authors: [{ name: siteConfig.name }],
   icons: {
@@ -69,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -77,12 +74,18 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=Poppins:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{const t=localStorage.getItem("shorestack_theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.classList.add("dark")}}catch(e){}`,
+          }}
+        />
       </head>
       <body className="min-h-screen flex flex-col antialiased">
         <Header />
-        <main className="flex-1 pt-16 md:pt-20">{children}</main>
+        <main className="flex-1 pt-[60px]">{children}</main>
         <Footer />
         <FirstVisitPopup />
+        <MobileCTA />
       </body>
     </html>
   );

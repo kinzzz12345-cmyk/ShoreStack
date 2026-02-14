@@ -1,201 +1,432 @@
 export const siteConfig = {
   name: "ShoreStack",
-  tagline: "Clean Design. Powerful Systems. One Partner.",
+  tagline: "We help small businesses save time and money with simple, affordable systems.",
   email: "shorestack@gmail.com",
   phone: "(240) 442-8990",
   url: "https://shorestack.com",
   description:
-    "ShoreStack delivers clean design and powerful systems. 20 years of full stack engineering experience building enterprise SaaS platforms, modern web apps, and scalable digital systems.",
+    "ShoreStack is a small local business in Maryland that builds affordable, practical software for small businesses. We keep costs low, work within your budget, and focus on saving you time and money every single day.",
+  workingHours: "Monday - Friday, 9 AM - 5 PM",
+  timezone: "Eastern Time (ET)",
+  avgResponseTime: "Within 24 hours",
+  lastUpdated: "February 2026",
+  version: "2.1",
+  location: "Maryland, USA",
 };
 
-export interface Service {
+export interface IdentificationCard {
+  id: string;
+  label: string;
+  description: string;
+  symptoms: string[];
+  suggestion: string;
+}
+
+export const identificationCards: IdentificationCard[] = [
+  {
+    id: "unorganized",
+    label: "Everything feels scattered",
+    description: "You know things should be more organized, but there is no time to fix it.",
+    symptoms: [
+      "Important details live in your head instead of a system anyone can access",
+      "You waste time every day looking for information that should be easy to find",
+      "Tasks slip through the cracks because there is no reliable way to track them",
+    ],
+    suggestion:
+      "Most businesses in this situation need one central place where tasks, notes, and follow-ups live together. Not a complicated system with a learning curve, just a straightforward tool where your team can see what needs to happen and when. We build these starting from a few hundred dollars, depending on what you actually need.",
+  },
+  {
+    id: "messages",
+    label: "Too many calls and messages",
+    description: "Your phone never stops ringing with questions you have already answered.",
+    symptoms: [
+      "You answer the same questions from customers over and over throughout the day",
+      "Customers call just to check on their booking status or confirm appointments",
+      "Messages come in through WhatsApp, texts, calls, and email all at once",
+    ],
+    suggestion:
+      "When customers keep calling for the same information, it usually means they do not have a way to find answers on their own. A simple self-service page where they can check status, confirm bookings, or find answers to common questions can cut your daily calls in half. This is one of the most affordable fixes we offer because it pays for itself within weeks.",
+  },
+  {
+    id: "staff",
+    label: "Staff tasks are hard to track",
+    description: "You spend more time managing people than running the business.",
+    symptoms: [
+      "You remind the same people about the same tasks multiple times a week",
+      "Nobody is sure who is responsible for what on any given day",
+      "Things get done late because there is no clear system for assignments",
+    ],
+    suggestion:
+      "A clear task board where everyone can see their responsibilities changes everything. Your staff checks it in the morning, updates it during the day, and you stop being the middleman for every single assignment. We can set this up quickly and affordably.",
+  },
+  {
+    id: "bookings",
+    label: "Bookings or orders get messy",
+    description: "Double bookings, missed appointments, and confused customers.",
+    symptoms: [
+      "Double bookings happen more often than you would like to admit",
+      "You juggle between calendars, text messages, and spreadsheets to track appointments",
+      "Customers show up at the wrong time or with the wrong expectations",
+    ],
+    suggestion:
+      "An online booking system that shows real availability, prevents conflicts, and sends automatic reminders solves this permanently. Your customers book on their own, get a confirmation right away, and you never have to manually send reminders again. We build these within your budget.",
+  },
+  {
+    id: "unsure",
+    label: "Not sure what I need",
+    description: "You know something needs to change, just not sure where to start.",
+    symptoms: [
+      "You feel busy all day but somehow not productive",
+      "Small problems keep growing into bigger ones because there is no time to address them",
+      "You have thought about getting help but were not sure who to call or what to ask for",
+    ],
+    suggestion:
+      "That is completely normal. Most of our clients start exactly here. We begin with a conversation where we listen to how your day actually works and point out where small changes would make the biggest difference. There is no cost for this initial conversation, and we will be honest about whether we can help.",
+  },
+];
+
+export interface Symptom {
+  id: string;
+  label: string;
+}
+
+export const symptoms: Symptom[] = [
+  { id: "s1", label: "Customers call or message for things they could look up themselves" },
+  { id: "s2", label: "You use WhatsApp, texts, or calls to coordinate your team" },
+  { id: "s3", label: "Important business information is stored only in your head" },
+  { id: "s4", label: "You have missed a follow-up with a customer in the last month" },
+  { id: "s5", label: "Scheduling conflicts or double bookings happen regularly" },
+  { id: "s6", label: "You copy information between different apps or spreadsheets" },
+  { id: "s7", label: "New employees take a long time to learn how things work" },
+  { id: "s8", label: "You get interrupted multiple times a day for routine questions" },
+  { id: "s9", label: "End-of-day or end-of-week reporting takes longer than it should" },
+  { id: "s10", label: "You have looked into software solutions but they seemed too expensive or complicated" },
+];
+
+export interface TimelineStep {
   id: string;
   title: string;
-  shortDescription: string;
-  fullDescription: string;
-  problemsSolved: string;
-  benefits: string;
-  icon: string;
-}
-
-export const services: Service[] = [
-  {
-    id: "custom-website",
-    title: "Custom Website Design and Development",
-    shortDescription:
-      "Modern responsive websites that look clean and work smoothly on every device.",
-    fullDescription:
-      "Your website is often the first thing a potential customer sees. A custom designed website ensures that first impression is a lasting one. We build modern, responsive websites from scratch using the latest technology so your business looks polished and professional on every screen. Whether visitors arrive on a phone, tablet, or desktop, the experience is seamless. No templates, no shortcuts. Every layout, color, and interaction is crafted to match your brand and guide visitors toward taking action.",
-    problemsSolved:
-      "Outdated designs that push visitors away. Confusing layouts where people cannot find what they need. Slow loading pages that hurt search rankings and frustrate users. Cookie cutter templates that make your business look like everyone else.",
-    benefits:
-      "You get a website that makes a strong first impression and builds trust instantly. Visitors stay longer, explore more, and are more likely to become customers. You can focus on running your business while we handle the design, development, and technical details.",
-    icon: "globe",
-  },
-  {
-    id: "website-redesign",
-    title: "Website Redesign for Outdated Sites",
-    shortDescription:
-      "Transform your outdated website into a clean, modern experience that builds trust.",
-    fullDescription:
-      "An outdated website does more harm than having no website at all. Visitors form an opinion about your business in seconds and a slow, cluttered, or dated design tells them to look elsewhere. We take your existing website and rebuild it with a fresh modern design, improved navigation, faster load times, and better mobile responsiveness. We keep what works, fix what does not, and ensure the new site reflects the quality of your business. Every redesign includes improved SEO fundamentals so search engines can find you more easily.",
-    problemsSolved:
-      "Poor first impressions that cost you customers before they even read your content. Low customer trust because the site looks unprofessional or abandoned. Bad mobile experience that drives away the majority of your visitors. Weak search engine visibility because the site was not built with SEO in mind.",
-    benefits:
-      "You get a website that looks professional and feels modern. Visitors trust your business immediately and stay longer to explore your offerings. Mobile users have a smooth experience which means more inquiries and sales. You can focus on your business while we handle the complete transformation.",
-    icon: "refresh",
-  },
-  {
-    id: "saas-architecture",
-    title: "Full SaaS Architecture and Development",
-    shortDescription:
-      "Enterprise level systems built with modern technology that scales with your business.",
-    fullDescription:
-      "Building a software as a service platform requires more than just writing code. It requires careful architecture, security planning, and infrastructure that can grow with demand. We design and build SaaS products from the ground up using proven patterns for multi tenancy, data isolation, authentication, billing integration, and API design. Whether you are launching a new product or rebuilding an existing one, we create systems that are reliable, maintainable, and ready for scale.",
-    problemsSolved:
-      "Unreliable applications that crash under load. Slow performance that drives users away. Technical debt that slows down every new feature. Security gaps that put your business and your customers at risk.",
-    benefits:
-      "You get a platform that is stable, fast, and secure from day one. Your development team can ship features faster because the foundation is solid. You can focus on growing your user base while we handle the engineering complexity.",
-    icon: "server",
-  },
-  {
-    id: "real-estate",
-    title: "Multi Tenant Real Estate Platforms",
-    shortDescription:
-      "Property management systems with listings, tenant portals, payments, and reporting all in one place.",
-    fullDescription:
-      "Managing real estate across multiple properties and tenants means juggling listings, applications, lease agreements, rent collection, maintenance requests, and financial reporting. We build custom platforms that bring all of this into a single system. Each property owner or management company gets their own secure space while sharing the same powerful infrastructure. From tenant portals where renters can pay rent and submit maintenance requests to admin dashboards with real time reporting, everything works together.",
-    problemsSolved:
-      "Manual processes that waste hours every week. Scattered tools that do not talk to each other. Inconsistent data that leads to mistakes and missed payments. Tenants who cannot easily communicate with management.",
-    benefits:
-      "You get a single platform that handles everything from listings to payments to maintenance. Your team spends less time on paperwork and more time on growing the portfolio. Tenants get a better experience which means fewer complaints and longer lease terms. You can focus on your properties while we build and maintain the technology.",
-    icon: "building",
-  },
-  {
-    id: "asset-management",
-    title: "Asset and Inventory Management Applications",
-    shortDescription:
-      "Track what you own, what you lend, what you borrow, and what you store, all from one place.",
-    fullDescription:
-      "Whether you are a small business owner renting out party supplies, a tool rental company managing hundreds of items, or a community group coordinating events and shared resources, you need a reliable way to know what you have, where it is, and who has it. We build custom asset and inventory management applications that replace notebooks, spreadsheets, and scattered text messages with a clean digital system. Track items you are lending out, things you are borrowing from others, and everything you have in storage. Log ideas for new inventory, manage event equipment lists, and generate reports that show exactly what is happening with your assets at any time. Built specifically for small business owners like party decorators, tool renters, event coordinators, and community organizers who need a simple tool that actually works for the way they operate.",
-    problemsSolved:
-      "Spreadsheet chaos where critical information gets lost or outdated. No clear record of what was lent out, to whom, or when it is due back. Items going missing because there is no central tracking system. Wasted time searching through notebooks, texts, and scattered files to find inventory details. Community groups and event planners losing track of shared resources across multiple people.",
-    benefits:
-      "You get a centralized system where every item is tracked whether it is lent, borrowed, stored, or in use. You always know exactly what you have, where it is, and who is responsible for it. Event planning and community coordination become simpler because everyone sees the same information. You can focus on running your business or organizing your events while the system keeps everything in order.",
-    icon: "clipboard",
-  },
-  {
-    id: "booking-systems",
-    title: "Online Booking Systems",
-    shortDescription:
-      "Let your customers book appointments online anytime without the back and forth.",
-    fullDescription:
-      "Service businesses like salons, restaurants, pet groomers, consultants, and fitness studios depend on appointments. When customers cannot book easily, they go somewhere else. We build custom online booking systems that let your customers see availability, choose a time, and confirm their appointment in seconds. Automated reminders reduce no shows. Calendar integration keeps your team organized. Whether you need simple time slot booking or complex multi staff scheduling with service categories, we build it to fit your workflow.",
-    problemsSolved:
-      "Missed phone calls that mean missed revenue. Double bookings that frustrate customers and staff. Scheduling confusion that wastes time every day. No shows that cost money because there are no automated reminders.",
-    benefits:
-      "Your customers can book anytime, even outside business hours. Your staff spends less time on the phone and more time serving customers. Automated reminders mean fewer no shows and a fuller schedule. You can focus on delivering great service while the booking system handles the logistics.",
-    icon: "calendar",
-  },
-  {
-    id: "local-seo",
-    title: "Local SEO Setup",
-    shortDescription:
-      "Get found by customers in your area through Google and local search results.",
-    fullDescription:
-      "Most customers search online before choosing a local business. If you do not show up in those searches, you are invisible to potential customers who are ready to buy. We set up and optimize your Google Business Profile, ensure your business information is consistent across all directories, implement local schema markup on your website, and create a strategy to improve your visibility in local search results. This is not about tricks or shortcuts. It is about making sure Google understands what your business does and where you are located so it can show you to the right people.",
-    problemsSolved:
-      "Low search ranking that means competitors get the calls instead of you. Inconsistent business information across the web that confuses both customers and search engines. No Google Business Profile or a profile that is incomplete and unoptimized. Missing out on customers who are searching for exactly what you offer in your area.",
-    benefits:
-      "You get discovered by nearby customers who are actively searching for your services. Your business information is accurate and consistent everywhere online. Your Google Business Profile is optimized to appear in local search results and map listings. You can focus on serving customers while we handle the technical side of local visibility.",
-    icon: "map",
-  },
-];
-
-export interface PortfolioItem {
-  title: string;
-  category: string;
   description: string;
-  url: string | null;
-  image: string;
-  isPlaceholder: boolean;
+  detail: string;
+  duration: string;
 }
 
-export const portfolioItems: PortfolioItem[] = [
+export const howIWorkSteps: TimelineStep[] = [
   {
-    title: "Restaurant Website",
-    category: "Web Design",
-    description: "Elegant dining experience with online reservations and menu showcase",
-    url: "https://saffron-amber.vercel.app/",
-    image: "/portfolio/restaurant.svg",
-    isPlaceholder: false,
+    id: "observe",
+    title: "Listen",
+    description: "We start by understanding how your business actually runs today.",
+    detail: "Before we touch any technology, we sit down with you and learn how your day works from start to finish. We ask about the things that slow you down, the tasks that take too long, and the problems that keep coming back. This is not a sales call. It is a working session where we figure out together whether we can actually help. If we cannot, we will tell you honestly.",
+    duration: "1-2 days",
   },
   {
-    title: "Pet Grooming Website",
-    category: "Web Design",
-    description: "Friendly pet care brand with online booking and service listings",
-    url: "https://dog-best-friend.vercel.app/",
-    image: "/portfolio/pet-grooming.svg",
-    isPlaceholder: false,
+    id: "map",
+    title: "Analyze",
+    description: "We document where time is being wasted and why.",
+    detail: "After listening, we map out your workflow step by step. We identify the exact points where time gets lost, where confusion happens, and what causes the same problems to repeat. Most business owners are surprised to discover that three or four simple bottlenecks are responsible for most of their daily frustration. We document all of this clearly so you can see it too.",
+    duration: "1-2 days",
   },
   {
-    title: "Nail Salon Website",
-    category: "Web Design",
-    description: "Stylish salon brand with appointment booking and gallery showcase",
-    url: null,
-    image: "/portfolio/nail-salon.svg",
-    isPlaceholder: true,
+    id: "simplify",
+    title: "Plan",
+    description: "We figure out the simplest fix that delivers the biggest improvement.",
+    detail: "Before building anything, we look for what can be removed, combined, or automated. Sometimes the best solution is not new software at all. Sometimes it is connecting two tools you already have, or removing a step that is not necessary. We always look for the smallest, most affordable change that gives you the biggest return. We give you a clear plan with a fixed price before any work begins.",
+    duration: "1 day",
   },
   {
-    title: "SaaS Dashboard",
-    category: "SaaS Platform",
-    description: "Analytics dashboard with real time data, charts, and user management",
-    url: null,
-    image: "/portfolio/saas-dashboard.svg",
-    isPlaceholder: true,
+    id: "build",
+    title: "Build",
+    description: "We create exactly what you need, nothing more.",
+    detail: "We build a focused system that fits your actual workflow rather than forcing you to change how you work. You will see a working version early so you can test it with your team before paying in full. We do not disappear for weeks and come back with something you did not ask for. You will know what is happening throughout the entire process, and the cost will never exceed what we agreed on.",
+    duration: "2-4 weeks",
   },
   {
-    title: "Real Estate Platform",
-    category: "Multi Tenant System",
-    description: "Property listings, tenant portals, and management dashboard",
-    url: null,
-    image: "/portfolio/real-estate.svg",
-    isPlaceholder: true,
-  },
-  {
-    title: "Asset Management System",
-    category: "Enterprise App",
-    description: "Inventory tracking, lending records, and event resource management",
-    url: null,
-    image: "/portfolio/asset-management.svg",
-    isPlaceholder: true,
+    id: "adjust",
+    title: "Support",
+    description: "We refine based on real use and stay available.",
+    detail: "After your system goes live, we stick around. Your team will have questions. Workflows change. Things come up that nobody predicted. We make adjustments based on how the system actually performs in your day-to-day operations, not based on assumptions. The first version is rarely the final one, and we do not charge you extra for reasonable refinements.",
+    duration: "Ongoing",
   },
 ];
 
-export interface Testimonial {
-  name: string;
-  role: string;
-  company: string;
+export interface BeforeAfter {
+  id: string;
+  area: string;
+  before: string;
+  after: string;
+}
+
+export const outcomes: BeforeAfter[] = [
+  {
+    id: "o1",
+    area: "Customer Communication",
+    before: "15+ calls and messages daily asking the same questions you have already answered",
+    after: "Customers check status, book appointments, and find answers on their own through a simple online page",
+  },
+  {
+    id: "o2",
+    area: "Staff Coordination",
+    before: "Verbal instructions that get forgotten within hours, leading to missed tasks and confusion",
+    after: "Clear task assignments visible to everyone on a shared board that updates in real time",
+  },
+  {
+    id: "o3",
+    area: "Scheduling",
+    before: "Double bookings, missed appointments, and time wasted on manual calendar management",
+    after: "Automated scheduling with real-time availability, instant confirmations, and reminders sent automatically",
+  },
+  {
+    id: "o4",
+    area: "Daily Reporting",
+    before: "30+ minutes at the end of every day manually compiling numbers from different sources",
+    after: "Reports generated automatically from the same system you already use throughout the day",
+  },
+];
+
+export interface TrustItem {
   text: string;
 }
 
-export const testimonials: Testimonial[] = [
+export const expectations: TrustItem[] = [
+  { text: "We ask questions before building anything, so you never pay for something you do not need" },
+  { text: "You see a working version to test before paying in full, not a mockup or a presentation" },
+  { text: "We explain everything in plain language, never in technical jargon" },
+  { text: "Changes after launch are normal and expected, we plan for them" },
+  { text: "If something is not the right fit for your budget or situation, we will tell you honestly" },
+];
+
+export const guarantees: TrustItem[] = [
+  { text: "No long-term contracts. You can stop at any time and keep everything we built" },
+  { text: "No jargon. We communicate like normal people, not like a tech company" },
+  { text: "No surprise costs. The price we agree on is the price you pay" },
+  { text: "You own everything. Every line of code, every design, every piece of data" },
+  { text: "We respond within one business day, every time" },
+];
+
+export interface Story {
+  id: string;
+  business: string;
+  situation: string;
+  change: string;
+  result: string;
+  saved: string;
+}
+
+export const operationalStories: Story[] = [
   {
-    name: "Sarah Mitchell",
-    role: "Owner",
-    company: "Bloom & Co Salon",
-    text: "ShoreStack completely transformed our online presence. Our new booking system cut down phone calls by half and our customers love being able to schedule appointments anytime. The website looks incredible on mobile which is where most of our clients find us.",
+    id: "st1",
+    business: "Hair Salon",
+    situation:
+      "The owner spent two hours every evening texting clients to remind them about appointments the next day. She also had to check her paper calendar against her phone to make sure nothing was double-booked. On busy weeks, mistakes were unavoidable.",
+    change:
+      "We built a simple online booking page where clients pick their own time slots. The system automatically sends text reminders 24 hours before each appointment and prevents anyone from booking a slot that is already taken.",
+    result:
+      "Evening admin time dropped from two hours to fifteen minutes. No-shows decreased significantly because clients received automatic reminders. The owner stopped worrying about double bookings entirely.",
+    saved: "10+ hours/week",
   },
   {
-    name: "James Rodriguez",
-    role: "Managing Director",
-    company: "Apex Property Group",
-    text: "We needed a platform that could handle multiple properties and hundreds of tenants. ShoreStack built us a system that replaced five different tools with one clean dashboard. Rent collection, maintenance requests, reporting. Everything just works.",
+    id: "st2",
+    business: "Property Manager",
+    situation:
+      "A small property manager handled rent payments through a spreadsheet and received maintenance requests through personal text messages. Requests frequently got lost in the thread, and tenants would call repeatedly to ask about the status of their repairs.",
+    change:
+      "We created a tenant portal where residents submit maintenance requests online and can check the status at any time. Rent payments are tracked automatically, and the manager gets a daily summary instead of managing everything manually.",
+    result:
+      "Missed maintenance requests dropped to zero. Tenants stopped calling to check on repair status because they could see updates themselves. The manager reclaimed six hours every week that used to go to tracking and follow-ups.",
+    saved: "6+ hours/week",
   },
   {
-    name: "Emily Chen",
-    role: "Founder",
-    company: "TasteBud Kitchen",
-    text: "Our old website looked like it was built ten years ago because it was. ShoreStack gave us a modern design that actually represents the quality of our food. Since the redesign, our online reservations have doubled.",
+    id: "st3",
+    business: "Catering Company",
+    situation:
+      "Orders came in through WhatsApp messages, including voice notes, photos of menus, and follow-up questions scattered across multiple conversations. The kitchen staff frequently had to interrupt the owner to clarify details, and incorrect deliveries happened at least twice a month.",
+    change:
+      "We built a structured order form that captures every detail upfront, including dietary requirements, delivery address, time, and special instructions. Each order automatically generates a clear checklist for the kitchen team.",
+    result:
+      "Order errors dropped from twice a month to nearly zero. Kitchen staff stopped interrupting the owner because all the details were right there on the checklist. The entire team saved eight hours per week that used to go to clarification and corrections.",
+    saved: "8+ hours/week",
   },
 ];
+
+export interface SolutionCategory {
+  id: string;
+  title: string;
+  description: string;
+  realLife: string;
+  causes: string[];
+  systemFix: string;
+  savings: string;
+}
+
+export const solutionCategories: SolutionCategory[] = [
+  {
+    id: "communication",
+    title: "Communication Problems",
+    description:
+      "Your customers and staff rely on calls, texts, and messaging apps for information that should be available without asking anyone.",
+    realLife:
+      "Think about how many times a day someone contacts you with a question you have already answered before. A customer wants to know if their appointment is confirmed. A staff member asks what time they start tomorrow. A vendor needs to know when to deliver. Each of these interruptions only takes a few minutes, but they add up to hours every week. The real cost is not just the time you spend answering, it is the focus you lose every time you get pulled away from what you were doing.",
+    causes: [
+      "There is no self-service option where customers can check status or find answers on their own",
+      "Information is spread across WhatsApp, email, phone calls, and in-person conversations with no central place to find it",
+      "Updates are communicated one person at a time instead of being posted where everyone can see them",
+    ],
+    systemFix:
+      "A customer-facing page or portal where people find answers themselves, combined with internal notifications that keep your team informed automatically. This is one of the most affordable solutions we build because it is straightforward to set up and it pays for itself almost immediately by cutting your daily interruptions in half.",
+    savings: "5-10 hours per week",
+  },
+  {
+    id: "scheduling",
+    title: "Scheduling Problems",
+    description:
+      "Appointments, bookings, or delivery windows are managed manually, which leads to conflicts, wasted time, and frustrated customers.",
+    realLife:
+      "If you have ever had a customer show up for an appointment that was already given to someone else, you know how damaging scheduling mistakes can be. It is not just embarrassing, it costs you the customer and the revenue. Manual scheduling falls apart because it depends on one person remembering to check the calendar, send confirmations, and follow up with reminders. When that person is busy, which is most of the time, things get missed.",
+    causes: [
+      "Availability is tracked in personal calendars, paper books, or spreadsheets that nobody else can access or update",
+      "There is no automatic way to detect conflicts, so double bookings only get caught when it is too late",
+      "Confirmations and reminders are sent manually, or not at all, leading to no-shows and confusion",
+    ],
+    systemFix:
+      "An online scheduling system that shows real availability to your customers, prevents double bookings automatically, and sends confirmations and reminders without you lifting a finger. Your customers book themselves, and you just check the schedule when you need to. We build these within your budget and typically have them running within two weeks.",
+    savings: "6-12 hours per week",
+  },
+  {
+    id: "tracking",
+    title: "Tracking Problems",
+    description:
+      "Orders, inventory, or job progress is tracked in spreadsheets, notebooks, or someone's memory, making it easy to lose details and hard to know where things stand.",
+    realLife:
+      "When a customer calls to ask about the status of their order and you have to dig through a spreadsheet, check your texts, and ask a team member before you can give an answer, that is a tracking problem. It makes your business look disorganized even if it is not. The bigger issue is that without a reliable system, things get missed. An order gets delayed because nobody noticed it was overdue. Inventory runs out because nobody updated the count. A job falls behind because nobody tracked the progress.",
+    causes: [
+      "The same information exists in multiple places, and none of them are up to date",
+      "There is no single view of what is pending, what is complete, and what is overdue",
+      "Checking the status of anything requires asking someone instead of looking it up",
+    ],
+    systemFix:
+      "A central tracking board or dashboard where every item has a clear status, an assigned owner, and a complete history. Everyone who needs to know can see where things stand without asking. We design these to be as simple as possible because the more complicated a tracking system is, the less likely your team will actually use it.",
+    savings: "4-8 hours per week",
+  },
+  {
+    id: "coordination",
+    title: "Team Coordination Problems",
+    description:
+      "Assigning tasks, checking progress, and making sure nothing falls through the cracks depends on verbal instructions and constant follow-ups.",
+    realLife:
+      "You tell someone to handle a task in the morning. By afternoon, you are not sure if it is done, so you ask. They forgot, or they thought someone else was doing it. You end up doing it yourself because it is faster. This happens every day, and it slowly burns you out. The problem is not your team. The problem is that verbal instructions are the worst possible way to assign and track work. People forget. They mishear. They assume. Without a system, you become the system, and that does not scale.",
+    causes: [
+      "Tasks are assigned verbally or through text messages and are forgotten by the end of the day",
+      "There is no way to see what each person is working on without asking them directly",
+      "The owner or manager becomes the bottleneck for every decision and status update",
+    ],
+    systemFix:
+      "A simple task management system where assignments are visible to everyone, deadlines are clear, and progress is updated by the people doing the work. You stop being the bottleneck and start being the leader. This is one of the most impactful changes we make for small businesses, and it does not have to cost much at all.",
+    savings: "5-10 hours per week",
+  },
+];
+
+export interface Example {
+  id: string;
+  title: string;
+  business: string;
+  situation: string;
+  change: string;
+  result: string;
+  timeSaved: string;
+  cost: string;
+}
+
+export const examples: Example[] = [
+  {
+    id: "ex1",
+    title: "Salon Appointment Booking",
+    business: "Hair Salon",
+    situation:
+      "The owner managed all bookings through phone calls and a paper calendar. Every evening, she spent one to two hours texting clients to remind them about their appointments for the next day. Double bookings happened at least once a week, and no-shows were a constant problem because reminders were inconsistent.",
+    change:
+      "We built a clean online booking page where clients pick their stylist, service, and preferred time slot. The system shows only available slots, sends automatic confirmation texts when someone books, and follows up with a reminder 24 hours before the appointment. The owner can view the full schedule on her phone at any time.",
+    result:
+      "Evening admin time dropped from two hours to about fifteen minutes. No-shows decreased significantly. Double bookings stopped entirely. The owner now focuses on clients during the day instead of managing a calendar.",
+    timeSaved: "~10 hours/week",
+    cost: "Budget-friendly",
+  },
+  {
+    id: "ex2",
+    title: "Property Maintenance Tracking",
+    business: "Property Manager",
+    situation:
+      "A property manager with twelve rental units received maintenance requests through personal text messages. Requests often got buried in conversation threads, and tenants would call repeatedly to check on the status of their repairs. The manager tracked everything in a spreadsheet that was rarely up to date.",
+    change:
+      "We created a simple tenant portal where residents submit maintenance requests with photos and descriptions. Each request gets a status that tenants can check online at any time. The manager receives a daily summary email listing all open requests, their priority, and how long each has been waiting.",
+    result:
+      "Missed maintenance requests dropped to zero. Tenants stopped calling for status updates because they could check online. The manager saved about six hours per week that previously went to manual tracking and phone calls.",
+    timeSaved: "~6 hours/week",
+    cost: "Budget-friendly",
+  },
+  {
+    id: "ex3",
+    title: "Catering Order Management",
+    business: "Catering Company",
+    situation:
+      "Orders came in through WhatsApp, including voice notes, photos of handwritten menus, and scattered follow-up questions. The kitchen team frequently interrupted the owner to clarify details like dietary restrictions, delivery times, or portion sizes. Incorrect deliveries happened at least twice a month, costing both money and customer trust.",
+    change:
+      "We built a structured online order form that walks customers through every detail: menu selections, dietary needs, headcount, delivery address, date, time, and special instructions. Each submitted order automatically generates a clean checklist for the kitchen team with everything they need to prepare and deliver correctly.",
+    result:
+      "Order errors dropped from twice a month to nearly zero. The kitchen team stopped interrupting the owner because all details were clearly listed on each checklist. The entire workflow saved about eight hours per week.",
+    timeSaved: "~8 hours/week",
+    cost: "Budget-friendly",
+  },
+  {
+    id: "ex4",
+    title: "Equipment Rental Inventory",
+    business: "Party Supplies Rental",
+    situation:
+      "The owner tracked rental items in a notebook. Chairs, tables, tents, and decorations were frequently double-rented because there was no real-time view of what was available. Items were sometimes returned late with no follow-up, and the owner spent hours every week trying to reconcile what was out, what was back, and what was damaged.",
+    change:
+      "We built a digital inventory system that shows what is available, what is rented, and when each item is due back. Customers can check availability online before calling. The system sends automatic return reminders to renters two days before their rental period ends.",
+    result:
+      "Double-rentals stopped completely. Late returns decreased because of automatic reminders. The owner saved about five hours per week that used to go to manual tracking and phone calls about availability.",
+    timeSaved: "~5 hours/week",
+    cost: "Budget-friendly",
+  },
+];
+
+export const wizardSteps = {
+  businessTypes: [
+    "Salon, barbershop, or spa",
+    "Restaurant, cafe, or catering",
+    "Property management",
+    "Retail or e-commerce",
+    "Professional services (consulting, legal, accounting)",
+    "Health and wellness",
+    "Events, entertainment, or rentals",
+    "Cleaning or home services",
+    "Other",
+  ],
+  frustrations: [
+    "Too many calls and messages to handle every day",
+    "Scheduling and booking mistakes happen regularly",
+    "Staff tasks are hard to track and things get missed",
+    "Losing track of orders, inventory, or customer requests",
+    "Spending too much time on paperwork and admin",
+    "Customers cannot find information without calling me",
+    "No reliable system for anything, everything is in my head",
+    "Current software is too expensive or complicated",
+    "Other",
+  ],
+  teamSizes: [
+    "Just me",
+    "2-5 people",
+    "6-15 people",
+    "16-30 people",
+    "More than 30",
+  ],
+  currentTools: [
+    "WhatsApp or text messages",
+    "Excel or Google Sheets",
+    "Paper notebooks or calendars",
+    "Multiple separate apps that do not talk to each other",
+    "A system that exists but does not work well",
+    "Nothing — everything is in my head or on paper",
+  ],
+};

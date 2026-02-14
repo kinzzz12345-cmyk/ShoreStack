@@ -1,200 +1,347 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { services, portfolioItems, testimonials, siteConfig } from "@/lib/data";
-import SectionHeading from "@/components/SectionHeading";
-import ServiceCard from "@/components/ServiceCard";
-import PortfolioCard from "@/components/PortfolioCard";
-import TestimonialCard from "@/components/TestimonialCard";
-import { ArrowRightIcon, CheckIcon } from "@/components/Icons";
+import {
+  identificationCards,
+  symptoms,
+  howIWorkSteps,
+  outcomes,
+  expectations,
+  guarantees,
+  operationalStories,
+} from "@/lib/data";
+import SectionReveal from "@/components/SectionReveal";
+import { ArrowRightIcon, CheckIcon, ClockIcon } from "@/components/Icons";
 
 export default function HomePage() {
+  const [selectedCard, setSelectedCard] = useState<string | null>(null);
+  const [checkedSymptoms, setCheckedSymptoms] = useState<Set<string>>(new Set());
+  const [activeStep, setActiveStep] = useState<string>("observe");
+  const [outcomeSliders, setOutcomeSliders] = useState<Record<string, number>>({});
+
+  const selectedCardData = identificationCards.find((c) => c.id === selectedCard);
+  const checkedCount = checkedSymptoms.size;
+
+  function toggleSymptom(id: string) {
+    setCheckedSymptoms((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  }
+
+  function getSliderValue(id: string) {
+    return outcomeSliders[id] ?? 50;
+  }
+
+  function setSliderValue(id: string, value: number) {
+    setOutcomeSliders((prev) => ({ ...prev, [id]: value }));
+  }
+
+  const activeStepData = howIWorkSteps.find((s) => s.id === activeStep);
+
   return (
     <>
-      {/* ── Hero ── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-white via-dust/30 to-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-wider text-bondi mb-4">
-                Full Stack Engineering &amp; Design
-              </p>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-iron font-[family-name:var(--font-heading)]">
-                Clean Design.
-                <br />
-                Powerful Systems.
-                <br />
-                <span className="text-bondi">One Partner.</span>
-              </h1>
-              <p className="mt-6 text-lg sm:text-xl leading-relaxed text-slate-blue max-w-2xl">
-                20 years of engineering experience building enterprise SaaS platforms,
-                modern web applications, and scalable digital systems. From concept to
-                launch, I deliver the design and technology your business needs to grow.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center rounded-lg bg-bondi px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-bondi-dark"
-                >
-                  Request a Free Consultation
-                  <ArrowRightIcon className="ml-2 w-4 h-4" />
-                </Link>
-                <Link
-                  href="/portfolio"
-                  className="inline-flex items-center justify-center rounded-lg border border-iron/20 bg-white px-7 py-3.5 text-sm font-semibold text-iron transition-colors hover:bg-dust/50"
-                >
-                  View Portfolio
-                </Link>
-              </div>
-            </div>
-            {/* Hero illustration */}
-            <div className="hidden lg:flex justify-center">
-              <Image
-                src="/hero-illustration.svg"
-                alt="ShoreStack — websites and applications on desktop and mobile"
-                width={560}
-                height={470}
-                priority
-              />
-            </div>
+      {/* Hero + Identification */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
+          <div className="max-w-3xl">
+            <p className="text-[14px] font-semibold text-accent uppercase tracking-wider mb-3">
+              Affordable systems for small businesses
+            </p>
+            <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold leading-tight text-primary">
+              Stop running your business from
+              <br className="hidden sm:block" />
+              calls, chats, and memory.
+            </h1>
+            <p className="mt-4 text-text-light text-lg leading-relaxed">
+              We build simple, budget-friendly systems that save small businesses 5 to 10 hours every week. No expensive software subscriptions, no complicated setups. Just practical tools that fit how you already work.
+            </p>
           </div>
-        </div>
-        {/* Decorative element */}
-        <div className="absolute top-0 right-0 -z-10 w-1/2 h-full bg-gradient-to-l from-bondi/5 to-transparent" />
-      </section>
 
-      {/* ── Mobile First Message ── */}
-      <section className="bg-white py-16 sm:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-slate-blue p-8 sm:p-12 lg:p-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-wider text-bondi mb-3">
-                  Why Mobile First Matters
-                </p>
-                <h2 className="text-2xl sm:text-3xl font-bold text-white font-[family-name:var(--font-heading)] leading-tight">
-                  Most people now visit websites on their phone.
-                </h2>
-                <p className="mt-4 text-base leading-relaxed text-dust/90">
-                  If a website is not mobile friendly or if it is hard to find services
-                  or features, users leave quickly and choose another business. My work
-                  focuses on simple structure, fast performance, and easy navigation on
-                  mobile first.
-                </p>
-              </div>
-              <div className="space-y-4">
-                {[
-                  "Mobile first responsive design",
-                  "Fast loading performance",
-                  "Simple and clear navigation",
-                  "Easy to find services and features",
-                  "Built for real users, not just desktop demos",
-                ].map((item) => (
-                  <div key={item} className="flex items-start gap-3">
-                    <div className="mt-0.5 flex-shrink-0 rounded-full bg-bondi/20 p-1">
-                      <CheckIcon className="w-4 h-4 text-bondi" />
-                    </div>
-                    <span className="text-sm text-dust/90">{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Services Preview ── */}
-      <section className="bg-dust/20 py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            label="What I Do"
-            title="Services Built for Growth"
-            description="From custom websites to enterprise SaaS platforms, I deliver solutions that help your business perform better and scale with confidence."
-          />
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.slice(0, 6).map((service) => (
-              <ServiceCard key={service.id} service={service} />
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-bondi hover:text-bondi-dark transition-colors"
-            >
-              View all services
-              <ArrowRightIcon className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Portfolio Preview ── */}
-      <section className="bg-white py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            label="Recent Work"
-            title="Projects That Deliver Results"
-            description="A selection of websites and systems built with clean design and reliable technology."
-          />
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {portfolioItems.slice(0, 3).map((item) => (
-              <PortfolioCard key={item.title} item={item} />
-            ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-bondi hover:text-bondi-dark transition-colors"
-            >
-              View full portfolio
-              <ArrowRightIcon className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Testimonials ── */}
-      <section className="bg-dust/20 py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            label="Client Feedback"
-            title="What Clients Are Saying"
-            description="Real results from businesses that invested in better design and stronger systems."
-          />
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.name} testimonial={testimonial} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA ── */}
-      <section className="bg-bondi py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white font-[family-name:var(--font-heading)]">
-            Ready to Build Something Great?
-          </h2>
-          <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">
-            Get a free consultation and see how clean design and powerful systems
-            can transform your business. No pressure, no obligations.
+          <p className="mt-8 text-[14px] font-medium text-primary">
+            Which of these sounds most like your situation?
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {identificationCards.map((card) => (
+              <button
+                key={card.id}
+                onClick={() => setSelectedCard(card.id === selectedCard ? null : card.id)}
+                className={`hover-elevate text-left rounded-xl border-2 p-4 transition-colors duration-[120ms] ${
+                  selectedCard === card.id
+                    ? "border-accent bg-accent/5"
+                    : "border-border bg-white hover:border-accent/40"
+                }`}
+              >
+                <span className="text-[15px] font-medium text-primary block">{card.label}</span>
+                <span className="text-[13px] text-text-light mt-1 block">{card.description}</span>
+              </button>
+            ))}
+          </div>
+
+          {selectedCardData && (
+            <div className="mt-6 rounded-xl bg-bg border border-border p-6 wizard-step">
+              <p className="text-[14px] font-semibold text-accent mb-3">
+                {selectedCardData.label}
+              </p>
+              <p className="text-[15px] text-text leading-relaxed">{selectedCardData.suggestion}</p>
+              <ul className="mt-4 space-y-2">
+                {selectedCardData.symptoms.map((s, i) => (
+                  <li key={i} className="flex items-start gap-2 text-[14px] text-text-light">
+                    <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Symptoms Checklist */}
+      <SectionReveal id="problems" className="bg-bg py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
+          <h2 className="text-2xl sm:text-3xl font-bold text-primary">
+            Does any of this sound familiar?
+          </h2>
+          <p className="mt-2 text-text-light">
+            Check the ones that apply. Most business owners are surprised how many they recognize.
+          </p>
+
+          <div className="mt-6 space-y-2">
+            {symptoms.map((symptom) => (
+              <label
+                key={symptom.id}
+                className={`flex items-start gap-3 rounded-xl border p-4 cursor-pointer transition-colors duration-[120ms] ${
+                  checkedSymptoms.has(symptom.id)
+                    ? "border-accent bg-accent/5"
+                    : "border-border bg-white hover:border-accent/40"
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={checkedSymptoms.has(symptom.id)}
+                  onChange={() => toggleSymptom(symptom.id)}
+                  className="mt-0.5 h-5 w-5 rounded border-border text-accent accent-accent shrink-0"
+                />
+                <span className="text-[15px] text-text">{symptom.label}</span>
+              </label>
+            ))}
+          </div>
+
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <span className="text-[14px] text-text-light">
+              Selected: <span className="font-semibold text-primary">{checkedCount}</span> of {symptoms.length}
+            </span>
+            {checkedCount >= 3 && (
+              <span className="text-[14px] font-medium text-accent bg-accent/10 rounded-full px-4 py-2 wizard-step">
+                Most businesses with 3+ of these lose 6-10 hours every week. We can help fix that affordably.
+              </span>
+            )}
+          </div>
+        </div>
+      </SectionReveal>
+
+      {/* How It Works */}
+      <SectionReveal id="how-it-works" className="bg-white py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
+          <h2 className="text-2xl sm:text-3xl font-bold text-primary">
+            How we work with you
+          </h2>
+          <p className="mt-2 text-text-light">
+            No mystery. No jargon. Here is exactly what happens when we work together, step by step.
+          </p>
+
+          <div className="mt-8 overflow-x-auto pb-2">
+            <div className="flex gap-2 min-w-max">
+              {howIWorkSteps.map((step, index) => (
+                <button
+                  key={step.id}
+                  onClick={() => setActiveStep(step.id)}
+                  className={`flex flex-col items-center gap-2 rounded-xl border-2 p-4 w-[140px] transition-all duration-[120ms] ${
+                    activeStep === step.id
+                      ? "border-accent bg-accent/5"
+                      : "border-border bg-white hover:border-accent/40"
+                  }`}
+                >
+                  <span className="text-[12px] font-medium text-text-light uppercase tracking-wider">
+                    Step {index + 1}
+                  </span>
+                  <span className="text-[15px] font-semibold text-primary">{step.title}</span>
+                  <span className="flex items-center gap-1 text-[12px] text-accent">
+                    <ClockIcon className="w-3 h-3" />
+                    {step.duration}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {activeStepData && (
+            <div className="mt-6 rounded-xl bg-bg border border-border p-6 wizard-step">
+              <h3 className="text-lg font-semibold text-primary">{activeStepData.title}</h3>
+              <p className="mt-1 text-[14px] text-accent font-medium">{activeStepData.description}</p>
+              <p className="mt-3 text-[15px] text-text leading-relaxed">{activeStepData.detail}</p>
+            </div>
+          )}
+        </div>
+      </SectionReveal>
+
+      {/* Outcomes */}
+      <SectionReveal className="bg-bg py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
+          <h2 className="text-2xl sm:text-3xl font-bold text-primary">
+            What changes look like
+          </h2>
+          <p className="mt-2 text-text-light">
+            Drag the slider to compare before and after for each area.
+          </p>
+
+          <div className="mt-6 space-y-6">
+            {outcomes.map((outcome) => {
+              const val = getSliderValue(outcome.id);
+              return (
+                <div key={outcome.id} className="rounded-xl border border-border bg-white p-6">
+                  <h3 className="text-[15px] font-semibold text-primary mb-4">{outcome.area}</h3>
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    value={val}
+                    onChange={(e) => setSliderValue(outcome.id, Number(e.target.value))}
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-accent bg-border"
+                    aria-label={`Compare before and after for ${outcome.area}`}
+                  />
+                  <div className="mt-4 grid grid-cols-2 gap-4">
+                    <div
+                      className="rounded-lg p-4 transition-opacity duration-[180ms]"
+                      style={{
+                        backgroundColor: "rgba(239, 68, 68, 0.05)",
+                        opacity: val <= 50 ? 1 : 0.3 + 0.7 * ((100 - val) / 100),
+                      }}
+                    >
+                      <p className="text-[12px] font-semibold text-red-600 mb-1">Before</p>
+                      <p className="text-[14px] text-text">{outcome.before}</p>
+                    </div>
+                    <div
+                      className="rounded-lg p-4 transition-opacity duration-[180ms]"
+                      style={{
+                        backgroundColor: "rgba(42, 157, 143, 0.05)",
+                        opacity: val >= 50 ? 1 : 0.3 + 0.7 * (val / 100),
+                      }}
+                    >
+                      <p className="text-[12px] font-semibold text-accent mb-1">After</p>
+                      <p className="text-[14px] text-text">{outcome.after}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </SectionReveal>
+
+      {/* Trust Panel */}
+      <SectionReveal className="bg-white py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
+          <h2 className="text-2xl sm:text-3xl font-bold text-primary">
+            What to expect from us
+          </h2>
+          <p className="mt-2 text-text-light">
+            Clear commitments, not marketing promises. We keep costs low and communication honest.
+          </p>
+
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="rounded-xl border border-border bg-bg p-6">
+              <h3 className="text-[14px] font-semibold text-primary uppercase tracking-wider mb-4">
+                How We Work
+              </h3>
+              <ul className="space-y-3">
+                {expectations.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <CheckIcon className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                    <span className="text-[14px] text-text">{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="rounded-xl border border-accent/30 bg-accent/5 p-6">
+              <h3 className="text-[14px] font-semibold text-primary uppercase tracking-wider mb-4">
+                Our Guarantee
+              </h3>
+              <ul className="space-y-3">
+                {guarantees.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <CheckIcon className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                    <span className="text-[14px] text-text">{item.text}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </SectionReveal>
+
+      {/* Stories */}
+      <SectionReveal className="bg-bg py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
+          <h2 className="text-2xl sm:text-3xl font-bold text-primary">
+            How it has worked for others
+          </h2>
+          <p className="mt-2 text-text-light">
+            Real businesses, real problems, real results. All built within budget.
+          </p>
+
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {operationalStories.map((story) => (
+              <div key={story.id} className="rounded-xl border border-border bg-white p-6 flex flex-col">
+                <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-accent bg-accent/10 rounded-full px-3 py-1 w-fit mb-4">
+                  <ClockIcon className="w-3 h-3" />
+                  Saved {story.saved}
+                </span>
+                <span className="text-[13px] font-medium text-primary mb-1">{story.business}</span>
+                <div className="mb-3">
+                  <span className="text-[12px] font-medium text-text-light uppercase tracking-wider">Situation</span>
+                  <p className="mt-1 text-[14px] text-text leading-relaxed">{story.situation}</p>
+                </div>
+                <div className="mb-3">
+                  <span className="text-[12px] font-medium text-accent uppercase tracking-wider">What we built</span>
+                  <p className="mt-1 text-[14px] text-text leading-relaxed">{story.change}</p>
+                </div>
+                <div className="mt-auto">
+                  <span className="text-[12px] font-medium text-primary uppercase tracking-wider">Result</span>
+                  <p className="mt-1 text-[14px] text-text font-medium leading-relaxed">{story.result}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </SectionReveal>
+
+      {/* CTA */}
+      <SectionReveal className="bg-primary py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">
+            Ready to save time and money?
+          </h2>
+          <p className="mt-3 text-white/70 mx-auto max-w-lg">
+            Tell us about your business in a few minutes. We review it before we talk so you do not have to explain everything twice. No cost, no obligation.
+          </p>
+          <div className="mt-6">
             <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-lg bg-white px-7 py-3.5 text-sm font-semibold text-bondi transition-colors hover:bg-dust"
+              href="/start"
+              className="inline-flex items-center justify-center rounded-xl bg-accent px-7 py-4 text-[15px] font-semibold text-white transition-all duration-[120ms] hover:bg-accent-dark hover:shadow-lg hover:shadow-accent/20"
             >
-              Request a Free Consultation
+              Talk to Us
               <ArrowRightIcon className="ml-2 w-4 h-4" />
             </Link>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="inline-flex items-center justify-center rounded-lg bg-iron px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-slate-blue"
-            >
-              Email Directly
-            </a>
           </div>
         </div>
-      </section>
+      </SectionReveal>
     </>
   );
 }
