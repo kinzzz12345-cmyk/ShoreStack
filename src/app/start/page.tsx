@@ -1,10 +1,62 @@
 "use client";
 
 import { useState } from "react";
-import { wizardSteps, howIWorkSteps } from "@/lib/data";
+import { wizardSteps } from "@/lib/data";
 import { ChevronLeftIcon, ChevronRightIcon, CheckIcon, ClockIcon } from "@/components/Icons";
 
 const totalSteps = 6;
+
+function InquirySteps() {
+  return (
+    <div className="mt-6 overflow-x-auto pb-2">
+      <div className="flex gap-3 min-w-max">
+        {inquirySteps.map((s) => (
+          <div
+            key={s.step}
+            className="flex flex-col gap-2 rounded-xl border-2 border-border bg-white p-4 w-[180px]"
+          >
+            <span className="text-[11px] font-medium text-text-light uppercase tracking-wider">
+              Step {s.step}
+            </span>
+            <span className="text-[15px] font-semibold text-primary leading-tight">{s.title}</span>
+            <span className="flex items-center gap-1 text-[12px] text-accent">
+              <ClockIcon className="w-3 h-3" />
+              {s.timeframe}
+            </span>
+            <p className="text-[13px] text-text-light leading-relaxed">{s.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const inquirySteps = [
+  {
+    step: 1,
+    title: "We review your submission",
+    timeframe: "Same day",
+    description: "We read everything you shared before picking up the phone. No cold call, no re-explaining yourself.",
+  },
+  {
+    step: 2,
+    title: "We reach out",
+    timeframe: "Within 1 business day",
+    description: "We contact you at the details you provided to schedule a brief conversation at a time that works for you.",
+  },
+  {
+    step: 3,
+    title: "Short call together",
+    timeframe: "15–30 minutes",
+    description: "A quick, no-pressure conversation to understand your situation better and answer any questions you have.",
+  },
+  {
+    step: 4,
+    title: "You get a clear answer",
+    timeframe: "Same call",
+    description: "We tell you honestly whether we can help, what it would involve, and what it would cost. No obligation.",
+  },
+];
 
 export default function StartPage() {
   const [step, setStep] = useState(1);
@@ -143,35 +195,12 @@ export default function StartPage() {
         <section className="bg-bg py-16">
           <div className="mx-auto max-w-3xl px-4 sm:px-7">
             <h2 className="text-xl sm:text-2xl font-bold text-primary text-center">
-              How we work with you
+              What happens next
             </h2>
             <p className="mt-2 text-text-light text-center">
-              No mystery. No jargon. Here is exactly what happens when we work together, step by step.
+              Here is exactly what to expect after you submit. No surprises.
             </p>
-
-            <div className="mt-8 space-y-4">
-              {howIWorkSteps.map((processStep, index) => (
-                <div key={processStep.id} className="rounded-xl border border-border bg-white p-5">
-                  <div className="flex items-start gap-4">
-                    <div className="flex flex-col items-center shrink-0">
-                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-accent text-white text-[14px] font-bold">
-                        {index + 1}
-                      </span>
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 flex-wrap">
-                        <h3 className="text-[16px] font-semibold text-primary">{processStep.title}</h3>
-                        <span className="inline-flex items-center gap-1 text-[12px] font-medium text-accent">
-                          <ClockIcon className="w-3 h-3" />
-                          {processStep.duration}
-                        </span>
-                      </div>
-                      <p className="mt-1 text-[14px] text-text-light leading-relaxed">{processStep.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <InquirySteps />
           </div>
         </section>
       </>
@@ -187,6 +216,14 @@ export default function StartPage() {
         <p className="mt-2 text-text-light">
           This takes a few minutes. It is not a commitment. It helps us understand your situation before we talk, so we can give you practical suggestions right away.
         </p>
+
+        {/* What to expect after submitting */}
+        <div className="mt-6 mb-2">
+          <p className="text-[13px] font-semibold text-primary uppercase tracking-wider mb-3">
+            What happens after you submit
+          </p>
+          <InquirySteps />
+        </div>
 
         {/* Progress bar */}
         <div className="mt-6 flex gap-1">
