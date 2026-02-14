@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { wizardSteps } from "@/lib/data";
-import { ChevronLeftIcon, ChevronRightIcon, CheckIcon } from "@/components/Icons";
+import { wizardSteps, howIWorkSteps } from "@/lib/data";
+import { ChevronLeftIcon, ChevronRightIcon, CheckIcon, ClockIcon } from "@/components/Icons";
 
 const totalSteps = 6;
 
@@ -98,24 +98,83 @@ export default function StartPage() {
     if (step > 1) setStep(step - 1);
   }
 
+  function resetForm() {
+    setStep(1);
+    setBusinessType(null);
+    setFrustrations(new Set());
+    setTeamSize(null);
+    setTools(new Set());
+    setNotes("");
+    setContactName("");
+    setContactEmail("");
+    setContactPhone("");
+    setBusinessName("");
+    setReferral("");
+    setSubmitted(false);
+    setError(null);
+  }
+
   if (submitted) {
     return (
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-2xl px-4 sm:px-7 text-center wizard-step">
-          <div className="mx-auto w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
-            <CheckIcon className="w-8 h-8 text-accent" />
+      <>
+        <section className="bg-white py-16">
+          <div className="mx-auto max-w-2xl px-4 sm:px-7 text-center wizard-step">
+            <div className="mx-auto w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mb-6">
+              <CheckIcon className="w-8 h-8 text-accent" />
+            </div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-primary">
+              Thank you, {contactName.split(" ")[0]}. We have everything we need.
+            </h1>
+            <p className="mt-4 text-text mx-auto leading-relaxed">
+              We will review your information before reaching out so you do not have to explain everything again. Expect to hear from us within one business day.
+            </p>
+            <p className="mt-6 text-text-light text-[14px]">
+              We will contact you at {contactEmail || contactPhone} to schedule a conversation. No cost, no obligation.
+            </p>
+            <button
+              onClick={resetForm}
+              className="mt-6 inline-flex items-center justify-center rounded-xl bg-accent px-7 py-3 text-[15px] font-semibold text-white transition-all duration-[120ms] hover:bg-accent-dark hover:shadow-lg"
+            >
+              Submit another inquiry
+            </button>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-primary">
-            Thank you, {contactName.split(" ")[0]}. We have everything we need.
-          </h1>
-          <p className="mt-4 text-text mx-auto leading-relaxed">
-            We will review your information before reaching out so you do not have to explain everything again. Expect to hear from us within one business day.
-          </p>
-          <p className="mt-6 text-text-light text-[14px]">
-            We will contact you at {contactEmail || contactPhone} to schedule a conversation. No cost, no obligation.
-          </p>
-        </div>
-      </section>
+        </section>
+
+        <section className="bg-bg py-16">
+          <div className="mx-auto max-w-3xl px-4 sm:px-7">
+            <h2 className="text-xl sm:text-2xl font-bold text-primary text-center">
+              How we work with you
+            </h2>
+            <p className="mt-2 text-text-light text-center">
+              No mystery. No jargon. Here is exactly what happens when we work together, step by step.
+            </p>
+
+            <div className="mt-8 space-y-4">
+              {howIWorkSteps.map((processStep, index) => (
+                <div key={processStep.id} className="rounded-xl border border-border bg-white p-5">
+                  <div className="flex items-start gap-4">
+                    <div className="flex flex-col items-center shrink-0">
+                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-accent text-white text-[14px] font-bold">
+                        {index + 1}
+                      </span>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <h3 className="text-[16px] font-semibold text-primary">{processStep.title}</h3>
+                        <span className="inline-flex items-center gap-1 text-[12px] font-medium text-accent">
+                          <ClockIcon className="w-3 h-3" />
+                          {processStep.duration}
+                        </span>
+                      </div>
+                      <p className="mt-1 text-[14px] text-text-light leading-relaxed">{processStep.description}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </>
     );
   }
 
