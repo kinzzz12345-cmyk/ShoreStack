@@ -3,18 +3,27 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, phone, service, message } = body;
+    const {
+      businessType,
+      frustrations,
+      teamSize,
+      tools,
+      notes,
+      contactName,
+      contactEmail,
+      contactPhone,
+      businessName,
+      referral,
+    } = body;
 
-    if (!name || !email || !message) {
+    if (!contactName || (!contactEmail && !contactPhone)) {
       return NextResponse.json(
-        { error: "Name, email, and message are required." },
+        { error: "Name and either email or phone are required." },
         { status: 400 }
       );
     }
 
     /* ── Build the email content ── */
-    const serviceLabel = service || "Not specified";
-    const phoneLabel = phone || "Not provided";
     const timestamp = new Date().toLocaleString("en-US", {
       dateStyle: "full",
       timeStyle: "short",
@@ -22,38 +31,79 @@ export async function POST(request: Request) {
 
     const htmlBody = `
       <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#46494c;">
-        <div style="background:#1985a1;padding:24px 32px;border-radius:12px 12px 0 0;">
-          <h1 style="margin:0;color:#fff;font-size:20px;">New Contact Form Submission</h1>
+        <div style="background:#2A9D8F;padding:24px 32px;border-radius:12px 12px 0 0;">
+          <h1 style="margin:0;color:#fff;font-size:20px;">New Lead from Talk to Us Wizard</h1>
           <p style="margin:4px 0 0;color:rgba(255,255,255,0.8);font-size:13px;">${timestamp}</p>
         </div>
         <div style="border:1px solid #dcdcdd;border-top:none;padding:32px;border-radius:0 0 12px 12px;">
-          <table style="width:100%;border-collapse:collapse;">
+          <h2 style="margin:0 0 16px;color:#2A9D8F;font-size:16px;">Contact Information</h2>
+          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
             <tr>
-              <td style="padding:8px 0;font-weight:bold;width:130px;vertical-align:top;color:#4c5c68;">Name</td>
-              <td style="padding:8px 0;">${name}</td>
+              <td style="padding:8px 0;font-weight:bold;width:140px;vertical-align:top;color:#4c5c68;">Name</td>
+              <td style="padding:8px 0;">${contactName}</td>
             </tr>
+            ${contactEmail ? `
             <tr>
               <td style="padding:8px 0;font-weight:bold;vertical-align:top;color:#4c5c68;">Email</td>
-              <td style="padding:8px 0;"><a href="mailto:${email}" style="color:#1985a1;">${email}</a></td>
-            </tr>
+              <td style="padding:8px 0;"><a href="mailto:${contactEmail}" style="color:#2A9D8F;">${contactEmail}</a></td>
+            </tr>` : ''}
+            ${contactPhone ? `
             <tr>
               <td style="padding:8px 0;font-weight:bold;vertical-align:top;color:#4c5c68;">Phone</td>
-              <td style="padding:8px 0;">${phoneLabel}</td>
-            </tr>
+              <td style="padding:8px 0;"><a href="tel:${contactPhone}" style="color:#2A9D8F;">${contactPhone}</a></td>
+            </tr>` : ''}
+            ${businessName ? `
             <tr>
-              <td style="padding:8px 0;font-weight:bold;vertical-align:top;color:#4c5c68;">Service</td>
-              <td style="padding:8px 0;">${serviceLabel}</td>
-            </tr>
+              <td style="padding:8px 0;font-weight:bold;vertical-align:top;color:#4c5c68;">Business Name</td>
+              <td style="padding:8px 0;">${businessName}</td>
+            </tr>` : ''}
+            ${referral ? `
             <tr>
-              <td colspan="2" style="padding:16px 0 0;">
-                <div style="font-weight:bold;color:#4c5c68;margin-bottom:8px;">Message</div>
-                <div style="background:#f9f9f9;padding:16px;border-radius:8px;white-space:pre-wrap;line-height:1.6;">${message}</div>
-              </td>
-            </tr>
+              <td style="padding:8px 0;font-weight:bold;vertical-align:top;color:#4c5c68;">Referral Source</td>
+              <td style="padding:8px 0;">${referral}</td>
+            </tr>` : ''}
           </table>
+
+          <h2 style="margin:24px 0 16px;color:#2A9D8F;font-size:16px;">Business Details</h2>
+          <table style="width:100%;border-collapse:collapse;margin-bottom:24px;">
+            ${businessType ? `
+            <tr>
+              <td style="padding:8px 0;font-weight:bold;width:140px;vertical-align:top;color:#4c5c68;">Business Type</td>
+              <td style="padding:8px 0;">${businessType}</td>
+            </tr>` : ''}
+            ${teamSize ? `
+            <tr>
+              <td style="padding:8px 0;font-weight:bold;vertical-align:top;color:#4c5c68;">Team Size</td>
+              <td style="padding:8px 0;">${teamSize}</td>
+            </tr>` : ''}
+            ${frustrations && frustrations.length > 0 ? `
+            <tr>
+              <td style="padding:8px 0;font-weight:bold;vertical-align:top;color:#4c5c68;">Frustrations</td>
+              <td style="padding:8px 0;">
+                <ul style="margin:0;padding-left:20px;">
+                  ${frustrations.map((f: string) => `<li>${f}</li>`).join('')}
+                </ul>
+              </td>
+            </tr>` : ''}
+            ${tools && tools.length > 0 ? `
+            <tr>
+              <td style="padding:8px 0;font-weight:bold;vertical-align:top;color:#4c5c68;">Current Tools</td>
+              <td style="padding:8px 0;">
+                <ul style="margin:0;padding-left:20px;">
+                  ${tools.map((t: string) => `<li>${t}</li>`).join('')}
+                </ul>
+              </td>
+            </tr>` : ''}
+          </table>
+
+          ${notes ? `
+          <h2 style="margin:24px 0 16px;color:#2A9D8F;font-size:16px;">Additional Notes</h2>
+          <div style="background:#f9f9f9;padding:16px;border-radius:8px;white-space:pre-wrap;line-height:1.6;">${notes}</div>
+          ` : ''}
+
           <hr style="margin:24px 0;border:none;border-top:1px solid #dcdcdd;" />
           <p style="font-size:12px;color:#c5c3c6;margin:0;">
-            This email was sent from the ShoreStack contact form.
+            This email was sent from the ShoreStack "Talk to Us" wizard.
           </p>
         </div>
       </div>
@@ -69,7 +119,7 @@ export async function POST(request: Request) {
         "Submission was received but no email was sent.",
       );
       console.log("Contact form submission (email not sent):", {
-        name, email, phone: phoneLabel, service: serviceLabel, message, timestamp,
+        contactName, contactEmail, contactPhone, businessName, businessType, timestamp,
       });
       return NextResponse.json(
         { error: "Email service is not configured. Please contact us directly." },
@@ -85,9 +135,9 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         from: "ShoreStack Contact <onboarding@resend.dev>",
-        reply_to: email,
+        reply_to: contactEmail || undefined,
         to: [contactTo],
-        subject: `New inquiry from ${name} — ShoreStack`,
+        subject: `New lead: ${contactName}${businessName ? ` from ${businessName}` : ''} — ShoreStack`,
         html: htmlBody,
       }),
     });
