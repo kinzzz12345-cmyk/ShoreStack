@@ -102,7 +102,7 @@ export default function AboutPage() {
 
       <section className="bg-primary py-10">
         <div className="mx-auto max-w-5xl px-4 sm:px-7 text-center">
-          <p className="text-white/80">
+          <p className="text-white/90">
             If this sounds like the kind of team you want working on your business operations, let us talk. No cost, no obligation.
           </p>
           <Link

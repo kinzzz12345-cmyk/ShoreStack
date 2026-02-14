@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/data";
-import { ShoreStackLogo, EnvelopeIcon, PhoneIcon, MapPinIcon } from "./Icons";
+import { ShoreStackLogo, EnvelopeIcon, PhoneIcon, MapPinIcon, USFlagIcon } from "./Icons";
 
 const footerNav = [
   { label: "Home", href: "/" },
@@ -30,9 +30,10 @@ export default function Footer() {
               <MapPinIcon className="w-3.5 h-3.5 shrink-0" />
               <span>Small local business in Maryland</span>
             </div>
-            <p className="mt-1 text-[13px] text-white/50 pl-[22px]">
-              Made in USA
-            </p>
+            <div className="mt-1 flex items-center gap-2 text-[13px] text-white/50 pl-[22px]">
+              <USFlagIcon className="w-4 h-3 shrink-0" />
+              <span>Made in USA</span>
+            </div>
           </div>
 
           <div>
