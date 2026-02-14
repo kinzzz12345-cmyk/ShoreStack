@@ -72,13 +72,14 @@ html.dark footer {
   background-color: #0B1418 !important;
 }
 
-html.dark input,
+html.dark input:not([type="range"]),
 html.dark textarea,
 html.dark select {
   background-color: #152228 !important;
   border-color: #2D3E47 !important;
   color: #E2E8F0 !important;
 }
+
 
 ::selection {
   background-color: var(--color-accent);
@@ -92,8 +93,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-  max-width: 65ch;
+  width: 100%;
+  max-width: 100%;
 }
+
+/* Tablet */
+@media (min-width: 640px) {
+  p {
+    max-width: 42rem; /* ~max-w-2xl */
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  p {
+    max-width: 48rem; /* ~max-w-3xl */
+  }
+}
+
 
 /* Scroll progress bar */
 .scroll-progress {
@@ -164,3 +181,4 @@ p {
 .animate-popup {
   animation: popupIn 300ms ease-out;
 }
+
