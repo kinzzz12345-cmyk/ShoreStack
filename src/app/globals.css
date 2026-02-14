@@ -4,11 +4,13 @@
   --color-primary: #2C3E50;
   --color-bg: #F4F5F7;
   --color-accent: #2A9D8F;
+  --color-accent-dark: #228578;
   --color-attention: #E9C46A;
   --color-text: #1F2933;
   --color-text-light: #4A5568;
   --color-border: #D1D5DB;
   --color-white: #FFFFFF;
+  --color-card: #FFFFFF;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-heading: "Poppins", ui-sans-serif, system-ui, sans-serif;
@@ -20,10 +22,62 @@ html {
 
 body {
   font-family: var(--font-sans);
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--color-text);
   background-color: var(--color-bg);
+}
+
+/* Dark mode */
+html.dark body {
+  color: #E2E8F0;
+  background-color: #0F1A1E;
+}
+
+html.dark .bg-white,
+html.dark .bg-card {
+  background-color: #152228 !important;
+}
+
+html.dark .bg-bg {
+  background-color: #0F1A1E !important;
+}
+
+html.dark .bg-primary {
+  background-color: #0B1418 !important;
+}
+
+html.dark .text-primary {
+  color: #E2E8F0 !important;
+}
+
+html.dark .text-text {
+  color: #CBD5E1 !important;
+}
+
+html.dark .text-text-light {
+  color: #94A3B8 !important;
+}
+
+html.dark .border-border {
+  border-color: #2D3E47 !important;
+}
+
+html.dark header {
+  background-color: rgba(15, 26, 30, 0.95) !important;
+  border-color: #2D3E47 !important;
+}
+
+html.dark footer {
+  background-color: #0B1418 !important;
+}
+
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #152228 !important;
+  border-color: #2D3E47 !important;
+  color: #E2E8F0 !important;
 }
 
 ::selection {
@@ -40,8 +94,6 @@ h1, h2, h3, h4, h5, h6 {
 p {
   max-width: 65ch;
 }
-
-/* Spacing rhythm: 8 / 16 / 28 / 44 / 72 */
 
 /* Scroll progress bar */
 .scroll-progress {
@@ -76,11 +128,6 @@ p {
   transform: translateY(-1px);
 }
 
-/* Expand animation */
-.expand-enter {
-  transition: max-height 180ms ease-out, opacity 180ms ease-out;
-}
-
 /* Focus styles for accessibility */
 *:focus-visible {
   outline: 2px solid var(--color-accent);
@@ -101,4 +148,19 @@ p {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-popup {
+  animation: popupIn 300ms ease-out;
 }

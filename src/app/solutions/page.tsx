@@ -1,77 +1,93 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { solutionCategories } from "@/lib/data";
-import { ArrowRightIcon } from "@/components/Icons";
+import { ArrowRightIcon, ClockIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "Business problems I help solve — communication, scheduling, tracking, and staff coordination issues for small businesses.",
+    "Affordable solutions for common small business problems. Communication, scheduling, tracking, and team coordination issues solved within your budget.",
 };
 
 export default function SolutionsPage() {
   return (
     <>
-      <section className="bg-white py-[72px]">
-        <div className="mx-auto max-w-5xl px-[16px] sm:px-[28px]">
-          <h1 className="text-3xl sm:text-4xl font-bold text-primary">
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
+          <p className="text-[14px] font-semibold text-accent uppercase tracking-wider mb-3">
             Solutions by problem, not by technology
+          </p>
+          <h1 className="text-3xl sm:text-4xl font-bold text-primary">
+            Tell us what is not working. We will figure out what to build.
           </h1>
-          <p className="mt-[16px] text-text-light text-lg">
-            You do not need to know what software to ask for.
-            Tell me what is not working and I will figure out what to build.
+          <p className="mt-4 text-text-light text-lg leading-relaxed">
+            You do not need to know what software to ask for. You do not need a technical background. Just describe the problem that is costing you time or money, and we will find the most affordable way to fix it. Every solution below is something we have built for real businesses, within their budget.
           </p>
         </div>
       </section>
 
-      <section className="bg-bg py-[72px]">
-        <div className="mx-auto max-w-5xl px-[16px] sm:px-[28px] space-y-[44px]">
+      <section className="bg-bg py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7 space-y-8">
           {solutionCategories.map((category) => (
             <div
               key={category.id}
               id={category.id}
-              className="rounded-lg border border-border bg-white p-[28px] sm:p-[44px]"
+              className="rounded-xl border border-border bg-white p-6 sm:p-8"
             >
-              <h2 className="text-xl sm:text-2xl font-bold text-primary">
-                {category.title}
-              </h2>
-              <p className="mt-[8px] text-text">{category.description}</p>
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
+                <h2 className="text-xl sm:text-2xl font-bold text-primary">
+                  {category.title}
+                </h2>
+                <span className="inline-flex items-center gap-1 text-[13px] font-semibold text-accent bg-accent/10 rounded-full px-3 py-1 shrink-0 w-fit">
+                  <ClockIcon className="w-3.5 h-3.5" />
+                  Saves {category.savings}
+                </span>
+              </div>
 
-              <div className="mt-[28px]">
-                <h3 className="text-[14px] font-semibold text-text-light uppercase tracking-wider mb-[12px]">
+              <p className="text-[15px] text-text leading-relaxed">{category.description}</p>
+
+              <div className="mt-5 rounded-lg bg-bg p-5">
+                <h3 className="text-[13px] font-semibold text-text-light uppercase tracking-wider mb-2">
+                  What this looks like in real life
+                </h3>
+                <p className="text-[14px] text-text leading-relaxed">{category.realLife}</p>
+              </div>
+
+              <div className="mt-5">
+                <h3 className="text-[13px] font-semibold text-text-light uppercase tracking-wider mb-3">
                   What usually causes this
                 </h3>
-                <ul className="space-y-[8px]">
+                <ul className="space-y-2">
                   {category.causes.map((cause, i) => (
-                    <li key={i} className="flex items-start gap-[8px] text-[15px] text-text">
-                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-attention shrink-0" />
+                    <li key={i} className="flex items-start gap-2 text-[14px] text-text">
+                      <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-attention shrink-0" />
                       {cause}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="mt-[28px] rounded-lg bg-accent/5 border border-accent/20 p-[16px] sm:p-[28px]">
-                <h3 className="text-[14px] font-semibold text-accent uppercase tracking-wider mb-[8px]">
-                  What a system fix looks like
+              <div className="mt-5 rounded-lg bg-accent/5 border border-accent/20 p-5">
+                <h3 className="text-[13px] font-semibold text-accent uppercase tracking-wider mb-2">
+                  How we fix it
                 </h3>
-                <p className="text-[15px] text-text">{category.systemFix}</p>
+                <p className="text-[14px] text-text leading-relaxed">{category.systemFix}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="bg-primary py-[44px]">
-        <div className="mx-auto max-w-5xl px-[16px] sm:px-[28px] text-center">
+      <section className="bg-primary py-10">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7 text-center">
           <p className="text-white/80">
-            Not sure which category fits? That is fine.
+            Not sure which category fits your situation? That is completely fine. Tell us what is happening and we will sort it out.
           </p>
           <Link
             href="/start"
-            className="mt-[16px] inline-flex items-center justify-center rounded-lg bg-accent px-[28px] py-[16px] text-[15px] font-semibold text-white transition-shadow duration-[120ms] hover:shadow-lg hover:shadow-accent/20"
+            className="mt-4 inline-flex items-center justify-center rounded-xl bg-accent px-7 py-4 text-[15px] font-semibold text-white transition-all duration-[120ms] hover:bg-accent-dark hover:shadow-lg"
           >
-            Describe your situation and I will sort it out
+            Describe your situation
             <ArrowRightIcon className="ml-2 w-4 h-4" />
           </Link>
         </div>

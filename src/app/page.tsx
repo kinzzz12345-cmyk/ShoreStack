@@ -40,48 +40,58 @@ export default function HomePage() {
     setOutcomeSliders((prev) => ({ ...prev, [id]: value }));
   }
 
+  const activeStepData = howIWorkSteps.find((s) => s.id === activeStep);
+
   return (
     <>
-      {/* ── SECTION 1: Interactive Identification Panel ── */}
-      <section className="bg-white py-[72px]">
-        <div className="mx-auto max-w-5xl px-[16px] sm:px-[28px]">
-          <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold leading-tight text-primary">
-            Stop running your business from
-            <br className="hidden sm:block" />
-            calls, chats, and memory.
-          </h1>
-          <p className="mt-[16px] text-text-light text-lg">
-            Pick what sounds most like you. The rest of the page will adjust.
+      {/* Hero + Identification */}
+      <section className="bg-white py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
+          <div className="max-w-3xl">
+            <p className="text-[14px] font-semibold text-accent uppercase tracking-wider mb-3">
+              Affordable systems for small businesses
+            </p>
+            <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-bold leading-tight text-primary">
+              Stop running your business from
+              <br className="hidden sm:block" />
+              calls, chats, and memory.
+            </h1>
+            <p className="mt-4 text-text-light text-lg leading-relaxed">
+              We build simple, budget-friendly systems that save small businesses 5 to 10 hours every week. No expensive software subscriptions, no complicated setups. Just practical tools that fit how you already work.
+            </p>
+          </div>
+
+          <p className="mt-8 text-[14px] font-medium text-primary">
+            Which of these sounds most like your situation?
           </p>
 
-          <div className="mt-[28px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[16px]">
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
             {identificationCards.map((card) => (
               <button
                 key={card.id}
                 onClick={() => setSelectedCard(card.id === selectedCard ? null : card.id)}
-                className={`hover-elevate text-left rounded-lg border-2 p-[16px] transition-colors duration-[120ms] ${
+                className={`hover-elevate text-left rounded-xl border-2 p-4 transition-colors duration-[120ms] ${
                   selectedCard === card.id
                     ? "border-accent bg-accent/5"
                     : "border-border bg-white hover:border-accent/40"
                 }`}
               >
-                <span className="text-[15px] font-medium text-text leading-snug block">
-                  {card.label}
-                </span>
+                <span className="text-[15px] font-medium text-primary block">{card.label}</span>
+                <span className="text-[13px] text-text-light mt-1 block">{card.description}</span>
               </button>
             ))}
           </div>
 
           {selectedCardData && (
-            <div className="mt-[28px] rounded-lg bg-bg border border-border p-[28px] wizard-step">
-              <p className="text-[14px] font-medium text-accent mb-[16px]">
-                Viewing suggestions for: {selectedCardData.label}
+            <div className="mt-6 rounded-xl bg-bg border border-border p-6 wizard-step">
+              <p className="text-[14px] font-semibold text-accent mb-3">
+                {selectedCardData.label}
               </p>
-              <p className="text-text">{selectedCardData.suggestion}</p>
-              <ul className="mt-[16px] space-y-[8px]">
+              <p className="text-[15px] text-text leading-relaxed">{selectedCardData.suggestion}</p>
+              <ul className="mt-4 space-y-2">
                 {selectedCardData.symptoms.map((s, i) => (
-                  <li key={i} className="flex items-start gap-[8px] text-[15px] text-text-light">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                  <li key={i} className="flex items-start gap-2 text-[14px] text-text-light">
+                    <span className="mt-[7px] w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                     {s}
                   </li>
                 ))}
@@ -91,21 +101,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SECTION 2: Symptoms Checklist ── */}
-      <SectionReveal id="problems" className="bg-bg py-[72px]">
-        <div className="mx-auto max-w-5xl px-[16px] sm:px-[28px]">
+      {/* Symptoms Checklist */}
+      <SectionReveal id="problems" className="bg-bg py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
           <h2 className="text-2xl sm:text-3xl font-bold text-primary">
             Does any of this sound familiar?
           </h2>
-          <p className="mt-[8px] text-text-light">
-            Check the ones that apply. Be honest — most business owners check more than they expect.
+          <p className="mt-2 text-text-light">
+            Check the ones that apply. Most business owners are surprised how many they recognize.
           </p>
 
-          <div className="mt-[28px] space-y-[8px]">
+          <div className="mt-6 space-y-2">
             {symptoms.map((symptom) => (
               <label
                 key={symptom.id}
-                className={`flex items-start gap-[12px] rounded-lg border p-[16px] cursor-pointer transition-colors duration-[120ms] ${
+                className={`flex items-start gap-3 rounded-xl border p-4 cursor-pointer transition-colors duration-[120ms] ${
                   checkedSymptoms.has(symptom.id)
                     ? "border-accent bg-accent/5"
                     : "border-border bg-white hover:border-accent/40"
@@ -122,48 +132,47 @@ export default function HomePage() {
             ))}
           </div>
 
-          <div className="mt-[28px] flex items-center gap-[16px]">
-            <span className="text-[15px] text-text-light">
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <span className="text-[14px] text-text-light">
               Selected: <span className="font-semibold text-primary">{checkedCount}</span> of {symptoms.length}
             </span>
             {checkedCount >= 3 && (
-              <span className="text-[15px] font-medium text-accent bg-accent/10 rounded-full px-[16px] py-[8px] wizard-step">
-                Businesses usually lose 6–10 hours weekly to these.
+              <span className="text-[14px] font-medium text-accent bg-accent/10 rounded-full px-4 py-2 wizard-step">
+                Most businesses with 3+ of these lose 6-10 hours every week. We can help fix that affordably.
               </span>
             )}
           </div>
         </div>
       </SectionReveal>
 
-      {/* ── SECTION 3: How I Work ── */}
-      <SectionReveal id="how-it-works" className="bg-white py-[72px]">
-        <div className="mx-auto max-w-5xl px-[16px] sm:px-[28px]">
+      {/* How It Works */}
+      <SectionReveal id="how-it-works" className="bg-white py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
           <h2 className="text-2xl sm:text-3xl font-bold text-primary">
-            How I work
+            How we work with you
           </h2>
-          <p className="mt-[8px] text-text-light">
-            No mystery. Here is exactly what happens when we work together.
+          <p className="mt-2 text-text-light">
+            No mystery. No jargon. Here is exactly what happens when we work together, step by step.
           </p>
 
-          {/* Horizontal timeline - scrollable on mobile */}
-          <div className="mt-[44px] overflow-x-auto pb-[8px]">
-            <div className="flex gap-[8px] min-w-max">
+          <div className="mt-8 overflow-x-auto pb-2">
+            <div className="flex gap-2 min-w-max">
               {howIWorkSteps.map((step, index) => (
                 <button
                   key={step.id}
                   onClick={() => setActiveStep(step.id)}
-                  className={`flex flex-col items-center gap-[8px] rounded-lg border-2 p-[16px] w-[160px] transition-all duration-[120ms] ${
+                  className={`flex flex-col items-center gap-2 rounded-xl border-2 p-4 w-[140px] transition-all duration-[120ms] ${
                     activeStep === step.id
                       ? "border-accent bg-accent/5"
                       : "border-border bg-white hover:border-accent/40"
                   }`}
                 >
-                  <span className="text-[13px] font-medium text-text-light uppercase tracking-wider">
+                  <span className="text-[12px] font-medium text-text-light uppercase tracking-wider">
                     Step {index + 1}
                   </span>
                   <span className="text-[15px] font-semibold text-primary">{step.title}</span>
-                  <span className="flex items-center gap-1 text-[13px] text-accent">
-                    <ClockIcon className="w-3.5 h-3.5" />
+                  <span className="flex items-center gap-1 text-[12px] text-accent">
+                    <ClockIcon className="w-3 h-3" />
                     {step.duration}
                   </span>
                 </button>
@@ -171,65 +180,61 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Active step detail */}
-          {howIWorkSteps.map((step) =>
-            activeStep === step.id ? (
-              <div key={step.id} className="mt-[28px] rounded-lg bg-bg border border-border p-[28px] wizard-step">
-                <h3 className="text-lg font-semibold text-primary">{step.title}</h3>
-                <p className="mt-[8px] text-text">{step.description}</p>
-              </div>
-            ) : null
+          {activeStepData && (
+            <div className="mt-6 rounded-xl bg-bg border border-border p-6 wizard-step">
+              <h3 className="text-lg font-semibold text-primary">{activeStepData.title}</h3>
+              <p className="mt-1 text-[14px] text-accent font-medium">{activeStepData.description}</p>
+              <p className="mt-3 text-[15px] text-text leading-relaxed">{activeStepData.detail}</p>
+            </div>
           )}
         </div>
       </SectionReveal>
 
-      {/* ── SECTION 4: Outcomes (Before vs After) ── */}
-      <SectionReveal className="bg-bg py-[72px]">
-        <div className="mx-auto max-w-5xl px-[16px] sm:px-[28px]">
+      {/* Outcomes */}
+      <SectionReveal className="bg-bg py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
           <h2 className="text-2xl sm:text-3xl font-bold text-primary">
             What changes look like
           </h2>
-          <p className="mt-[8px] text-text-light">
-            Drag the slider to see the before and after.
+          <p className="mt-2 text-text-light">
+            Drag the slider to compare before and after for each area.
           </p>
 
-          <div className="mt-[28px] space-y-[28px]">
+          <div className="mt-6 space-y-6">
             {outcomes.map((outcome) => {
               const val = getSliderValue(outcome.id);
               return (
-                <div key={outcome.id} className="rounded-lg border border-border bg-white p-[28px]">
-                  <h3 className="text-[15px] font-semibold text-primary mb-[16px]">{outcome.area}</h3>
-                  <div className="relative">
-                    <input
-                      type="range"
-                      min={0}
-                      max={100}
-                      value={val}
-                      onChange={(e) => setSliderValue(outcome.id, Number(e.target.value))}
-                      className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-accent bg-border"
-                      aria-label={`Compare before and after for ${outcome.area}`}
-                    />
-                    <div className="mt-[16px] grid grid-cols-2 gap-[16px]">
-                      <div
-                        className="rounded-lg p-[16px] transition-opacity duration-[180ms]"
-                        style={{
-                          backgroundColor: "rgba(239, 68, 68, 0.05)",
-                          opacity: val <= 50 ? 1 : 0.3 + 0.7 * ((100 - val) / 100),
-                        }}
-                      >
-                        <p className="text-[13px] font-medium text-red-600 mb-[4px]">Before</p>
-                        <p className="text-[15px] text-text">{outcome.before}</p>
-                      </div>
-                      <div
-                        className="rounded-lg p-[16px] transition-opacity duration-[180ms]"
-                        style={{
-                          backgroundColor: "rgba(42, 157, 143, 0.05)",
-                          opacity: val >= 50 ? 1 : 0.3 + 0.7 * (val / 100),
-                        }}
-                      >
-                        <p className="text-[13px] font-medium text-accent mb-[4px]">After</p>
-                        <p className="text-[15px] text-text">{outcome.after}</p>
-                      </div>
+                <div key={outcome.id} className="rounded-xl border border-border bg-white p-6">
+                  <h3 className="text-[15px] font-semibold text-primary mb-4">{outcome.area}</h3>
+                  <input
+                    type="range"
+                    min={0}
+                    max={100}
+                    value={val}
+                    onChange={(e) => setSliderValue(outcome.id, Number(e.target.value))}
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer accent-accent bg-border"
+                    aria-label={`Compare before and after for ${outcome.area}`}
+                  />
+                  <div className="mt-4 grid grid-cols-2 gap-4">
+                    <div
+                      className="rounded-lg p-4 transition-opacity duration-[180ms]"
+                      style={{
+                        backgroundColor: "rgba(239, 68, 68, 0.05)",
+                        opacity: val <= 50 ? 1 : 0.3 + 0.7 * ((100 - val) / 100),
+                      }}
+                    >
+                      <p className="text-[12px] font-semibold text-red-600 mb-1">Before</p>
+                      <p className="text-[14px] text-text">{outcome.before}</p>
+                    </div>
+                    <div
+                      className="rounded-lg p-4 transition-opacity duration-[180ms]"
+                      style={{
+                        backgroundColor: "rgba(42, 157, 143, 0.05)",
+                        opacity: val >= 50 ? 1 : 0.3 + 0.7 * (val / 100),
+                      }}
+                    >
+                      <p className="text-[12px] font-semibold text-accent mb-1">After</p>
+                      <p className="text-[14px] text-text">{outcome.after}</p>
                     </div>
                   </div>
                 </div>
@@ -239,40 +244,40 @@ export default function HomePage() {
         </div>
       </SectionReveal>
 
-      {/* ── SECTION 5: Transparency Trust Panel ── */}
-      <SectionReveal className="bg-white py-[72px]">
-        <div className="mx-auto max-w-5xl px-[16px] sm:px-[28px]">
+      {/* Trust Panel */}
+      <SectionReveal className="bg-white py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
           <h2 className="text-2xl sm:text-3xl font-bold text-primary">
-            What to expect from me
+            What to expect from us
           </h2>
-          <p className="mt-[8px] text-text-light">
-            Clear commitments, not marketing promises.
+          <p className="mt-2 text-text-light">
+            Clear commitments, not marketing promises. We keep costs low and communication honest.
           </p>
 
-          <div className="mt-[28px] grid grid-cols-1 md:grid-cols-2 gap-[28px]">
-            <div className="rounded-lg border border-border bg-bg p-[28px]">
-              <h3 className="text-[15px] font-semibold text-primary uppercase tracking-wider mb-[16px]">
-                What I Expect of Myself
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="rounded-xl border border-border bg-bg p-6">
+              <h3 className="text-[14px] font-semibold text-primary uppercase tracking-wider mb-4">
+                How We Work
               </h3>
-              <ul className="space-y-[12px]">
+              <ul className="space-y-3">
                 {expectations.map((item, i) => (
-                  <li key={i} className="flex items-start gap-[8px]">
-                    <CheckIcon className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-[15px] text-text">{item.text}</span>
+                  <li key={i} className="flex items-start gap-2">
+                    <CheckIcon className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                    <span className="text-[14px] text-text">{item.text}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="rounded-lg border border-accent/30 bg-accent/5 p-[28px]">
-              <h3 className="text-[15px] font-semibold text-primary uppercase tracking-wider mb-[16px]">
-                What I Guarantee
+            <div className="rounded-xl border border-accent/30 bg-accent/5 p-6">
+              <h3 className="text-[14px] font-semibold text-primary uppercase tracking-wider mb-4">
+                Our Guarantee
               </h3>
-              <ul className="space-y-[12px]">
+              <ul className="space-y-3">
                 {guarantees.map((item, i) => (
-                  <li key={i} className="flex items-start gap-[8px]">
-                    <CheckIcon className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                    <span className="text-[15px] text-text">{item.text}</span>
+                  <li key={i} className="flex items-start gap-2">
+                    <CheckIcon className="w-4 h-4 text-accent shrink-0 mt-0.5" />
+                    <span className="text-[14px] text-text">{item.text}</span>
                   </li>
                 ))}
               </ul>
@@ -281,30 +286,35 @@ export default function HomePage() {
         </div>
       </SectionReveal>
 
-      {/* ── SECTION 6: Operational Stories ── */}
-      <SectionReveal className="bg-bg py-[72px]">
-        <div className="mx-auto max-w-5xl px-[16px] sm:px-[28px]">
+      {/* Stories */}
+      <SectionReveal className="bg-bg py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7">
           <h2 className="text-2xl sm:text-3xl font-bold text-primary">
             How it has worked for others
           </h2>
-          <p className="mt-[8px] text-text-light">
-            Real situations, real changes, real results.
+          <p className="mt-2 text-text-light">
+            Real businesses, real problems, real results. All built within budget.
           </p>
 
-          <div className="mt-[28px] grid grid-cols-1 md:grid-cols-3 gap-[16px]">
+          <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
             {operationalStories.map((story) => (
-              <div key={story.id} className="rounded-lg border border-border bg-white p-[28px] flex flex-col">
-                <div className="mb-[16px]">
-                  <span className="text-[13px] font-medium text-text-light uppercase tracking-wider">Situation</span>
-                  <p className="mt-[4px] text-[15px] text-text">{story.situation}</p>
+              <div key={story.id} className="rounded-xl border border-border bg-white p-6 flex flex-col">
+                <span className="inline-flex items-center gap-1 text-[12px] font-semibold text-accent bg-accent/10 rounded-full px-3 py-1 w-fit mb-4">
+                  <ClockIcon className="w-3 h-3" />
+                  Saved {story.saved}
+                </span>
+                <span className="text-[13px] font-medium text-primary mb-1">{story.business}</span>
+                <div className="mb-3">
+                  <span className="text-[12px] font-medium text-text-light uppercase tracking-wider">Situation</span>
+                  <p className="mt-1 text-[14px] text-text leading-relaxed">{story.situation}</p>
                 </div>
-                <div className="mb-[16px]">
-                  <span className="text-[13px] font-medium text-accent uppercase tracking-wider">Change</span>
-                  <p className="mt-[4px] text-[15px] text-text">{story.change}</p>
+                <div className="mb-3">
+                  <span className="text-[12px] font-medium text-accent uppercase tracking-wider">What we built</span>
+                  <p className="mt-1 text-[14px] text-text leading-relaxed">{story.change}</p>
                 </div>
                 <div className="mt-auto">
-                  <span className="text-[13px] font-medium text-primary uppercase tracking-wider">Result</span>
-                  <p className="mt-[4px] text-[15px] text-text font-medium">{story.result}</p>
+                  <span className="text-[12px] font-medium text-primary uppercase tracking-wider">Result</span>
+                  <p className="mt-1 text-[14px] text-text font-medium leading-relaxed">{story.result}</p>
                 </div>
               </div>
             ))}
@@ -312,22 +322,21 @@ export default function HomePage() {
         </div>
       </SectionReveal>
 
-      {/* ── SECTION 7: Guided Start CTA ── */}
-      <SectionReveal className="bg-primary py-[72px]">
-        <div className="mx-auto max-w-5xl px-[16px] sm:px-[28px] text-center">
+      {/* CTA */}
+      <SectionReveal className="bg-primary py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-7 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-white">
-            Ready to simplify your operations?
+            Ready to save time and money?
           </h2>
-          <p className="mt-[8px] text-white/70 mx-auto">
-            The intake form takes a few minutes. I review it before our call so you
-            do not need to explain everything again.
+          <p className="mt-3 text-white/70 mx-auto max-w-lg">
+            Tell us about your business in a few minutes. We review it before we talk so you do not have to explain everything twice. No cost, no obligation.
           </p>
-          <div className="mt-[28px]">
+          <div className="mt-6">
             <Link
               href="/start"
-              className="inline-flex items-center justify-center rounded-lg bg-accent px-[28px] py-[16px] text-[15px] font-semibold text-white transition-shadow duration-[120ms] hover:shadow-lg hover:shadow-accent/20"
+              className="inline-flex items-center justify-center rounded-xl bg-accent px-7 py-4 text-[15px] font-semibold text-white transition-all duration-[120ms] hover:bg-accent-dark hover:shadow-lg hover:shadow-accent/20"
             >
-              Start the intake process
+              Talk to Us
               <ArrowRightIcon className="ml-2 w-4 h-4" />
             </Link>
           </div>
