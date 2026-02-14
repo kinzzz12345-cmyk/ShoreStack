@@ -141,7 +141,9 @@ export default function StartPage() {
   }
 
   function scrollToForm() {
-    formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(() => {
+      formTopRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
   }
 
   function goNext() {
@@ -228,7 +230,7 @@ export default function StartPage() {
         </p>
 
         {/* Progress bar */}
-        <div ref={formTopRef} className="mt-6 flex gap-1">
+        <div ref={formTopRef} className="mt-6 flex gap-1 scroll-mt-20">
           {Array.from({ length: totalSteps }, (_, i) => (
             <div
               key={i}
