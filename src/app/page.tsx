@@ -47,7 +47,7 @@ export default function HomePage() {
       {/* Hero + Identification */}
       <section className="bg-white py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-7">
-          <div className="max-w-3xl">
+          <div>
             <p className="text-[14px] font-semibold text-accent uppercase tracking-wider mb-3">
               Affordable systems for small businesses
             </p>

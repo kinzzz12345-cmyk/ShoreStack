@@ -19,6 +19,8 @@ export default function StartPage() {
   const [businessName, setBusinessName] = useState("");
   const [referral, setReferral] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   function toggleFrustration(f: string) {
     setFrustrations((prev) => {
@@ -48,8 +50,43 @@ export default function StartPage() {
     return true;
   }
 
-  function handleSubmit() {
-    setSubmitted(true);
+  async function handleSubmit() {
+    setSubmitting(true);
+    setError(null);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          businessType,
+          frustrations: Array.from(frustrations),
+          teamSize,
+          tools: Array.from(tools),
+          notes,
+          contactName,
+          contactEmail,
+          contactPhone,
+          businessName,
+          referral,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit form");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setError(err instanceof Error ? err.message : "Failed to submit form. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   function goNext() {
@@ -106,6 +143,13 @@ export default function StartPage() {
         <p className="mt-2 text-[13px] text-text-light">
           Step {step} of {totalSteps}
         </p>
+
+        {/* Error message */}
+        {error && (
+          <div className="mt-6 rounded-xl border-2 border-red-200 bg-red-50 p-4 text-red-700">
+            <p className="text-[14px] font-medium">{error}</p>
+          </div>
+        )}
 
         {/* Step content */}
         <div className="mt-6 wizard-step" key={step}>
@@ -312,15 +356,15 @@ export default function StartPage() {
 
           <button
             onClick={goNext}
-            disabled={!canProceed()}
+            disabled={!canProceed() || submitting}
             className={`inline-flex items-center gap-1 rounded-xl px-6 py-3 text-[15px] font-semibold text-white transition-all duration-[120ms] ${
-              canProceed()
+              canProceed() && !submitting
                 ? "bg-accent hover:bg-accent-dark hover:shadow-lg"
                 : "bg-border cursor-not-allowed"
             }`}
           >
-            {step === totalSteps ? "Submit" : "Continue"}
-            {step < totalSteps && <ChevronRightIcon className="w-4 h-4" />}
+            {submitting ? "Submitting..." : step === totalSteps ? "Submit" : "Continue"}
+            {step < totalSteps && !submitting && <ChevronRightIcon className="w-4 h-4" />}
           </button>
         </div>
       </div>
