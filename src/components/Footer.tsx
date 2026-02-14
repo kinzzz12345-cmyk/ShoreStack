@@ -23,14 +23,14 @@ export default function Footer() {
                 ShoreStack
               </span>
             </Link>
-            <p className="mt-2 text-[14px] leading-relaxed text-white/70">
+            <p className="mt-2 text-[14px] leading-relaxed text-white/60">
               {siteConfig.tagline}
             </p>
-            <div className="mt-4 flex items-center gap-2 text-[13px] text-white/70">
+            <div className="mt-4 flex items-center gap-2 text-[13px] text-white/50">
               <MapPinIcon className="w-3.5 h-3.5 shrink-0" />
               <span>Small local business in Maryland</span>
             </div>
-            <div className="mt-1 flex items-center gap-2 text-[13px] text-white/70 pl-[22px]">
+            <div className="mt-1 flex items-center gap-2 text-[13px] text-white/50 pl-[22px]">
               <USFlagIcon className="w-4 h-3 shrink-0" />
               <span>Made in USA</span>
             </div>
@@ -45,7 +45,7 @@ export default function Footer() {
                 <li key={item.label}>
                   <Link
                     href={item.href}
-                    className="text-[14px] text-white/70 hover:text-white transition-colors duration-[120ms]"
+                    className="text-[14px] text-white/60 hover:text-white transition-colors duration-[120ms]"
                   >
                     {item.label}
                   </Link>
@@ -62,7 +62,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="flex items-center gap-2 text-[14px] text-white/70 hover:text-white transition-colors duration-[120ms]"
+                  className="flex items-center gap-2 text-[14px] text-white/60 hover:text-white transition-colors duration-[120ms]"
                 >
                   <EnvelopeIcon className="w-4 h-4 shrink-0" />
                   {siteConfig.email}
@@ -71,7 +71,7 @@ export default function Footer() {
               <li>
                 <a
                   href={`tel:${siteConfig.phone}`}
-                  className="flex items-center gap-2 text-[14px] text-white/70 hover:text-white transition-colors duration-[120ms]"
+                  className="flex items-center gap-2 text-[14px] text-white/60 hover:text-white transition-colors duration-[120ms]"
                 >
                   <PhoneIcon className="w-4 h-4 shrink-0" />
                   {siteConfig.phone}
@@ -84,7 +84,7 @@ export default function Footer() {
             <h3 className="text-[13px] font-semibold uppercase tracking-wider text-white mb-4">
               Why Us
             </h3>
-            <ul className="space-y-2 text-[14px] text-white/70">
+            <ul className="space-y-2 text-[14px] text-white/60">
               <li>Low cost, budget-based pricing</li>
               <li>Save your time and money</li>
               <li>No contracts or lock-ins</li>
@@ -95,7 +95,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-white/10 pt-6">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-[12px] text-white/60">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-[12px] text-white/40">
             <p>&copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
             <div className="flex flex-wrap gap-x-6 gap-y-2">
               <span>{siteConfig.workingHours}</span>
