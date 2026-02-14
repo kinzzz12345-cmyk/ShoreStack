@@ -8,25 +8,23 @@ const totalSteps = 6;
 
 function InquirySteps() {
   return (
-    <div className="mt-6 overflow-x-auto pb-2">
-      <div className="flex gap-3 min-w-max">
-        {inquirySteps.map((s) => (
-          <div
-            key={s.step}
-            className="flex flex-col gap-2 rounded-xl border-2 border-border bg-white p-4 w-[180px]"
-          >
-            <span className="text-[11px] font-medium text-text-light uppercase tracking-wider">
-              Step {s.step}
-            </span>
-            <span className="text-[15px] font-semibold text-primary leading-tight">{s.title}</span>
-            <span className="flex items-center gap-1 text-[12px] text-accent">
-              <ClockIcon className="w-3 h-3" />
-              {s.timeframe}
-            </span>
-            <p className="text-[13px] text-text-light leading-relaxed">{s.description}</p>
-          </div>
-        ))}
-      </div>
+    <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+      {inquirySteps.map((s) => (
+        <div
+          key={s.step}
+          className="flex flex-col gap-2 rounded-xl border-2 border-border bg-white p-4"
+        >
+          <span className="text-[11px] font-medium text-text-light uppercase tracking-wider">
+            Step {s.step}
+          </span>
+          <span className="text-[15px] font-semibold text-primary leading-tight">{s.title}</span>
+          <span className="flex items-center gap-1 text-[12px] text-accent">
+            <ClockIcon className="w-3 h-3" />
+            {s.timeframe}
+          </span>
+          <p className="text-[13px] text-text-light leading-relaxed">{s.description}</p>
+        </div>
+      ))}
     </div>
   );
 }
@@ -193,12 +191,12 @@ export default function StartPage() {
         </section>
 
         <section className="bg-bg py-16">
-          <div className="mx-auto max-w-3xl px-4 sm:px-7">
+          <div className="mx-auto max-w-4xl px-4 sm:px-7">
             <h2 className="text-xl sm:text-2xl font-bold text-primary text-center">
               What happens next
             </h2>
             <p className="mt-2 text-text-light text-center">
-              Here is exactly what to expect after you submit. No surprises.
+              Here is exactly what to expect. No surprises.
             </p>
             <InquirySteps />
           </div>
@@ -216,14 +214,6 @@ export default function StartPage() {
         <p className="mt-2 text-text-light">
           This takes a few minutes. It is not a commitment. It helps us understand your situation before we talk, so we can give you practical suggestions right away.
         </p>
-
-        {/* What to expect after submitting */}
-        <div className="mt-6 mb-2">
-          <p className="text-[13px] font-semibold text-primary uppercase tracking-wider mb-3">
-            What happens after you submit
-          </p>
-          <InquirySteps />
-        </div>
 
         {/* Progress bar */}
         <div className="mt-6 flex gap-1">
@@ -463,6 +453,21 @@ export default function StartPage() {
             {step < totalSteps && !submitting && <ChevronRightIcon className="w-4 h-4" />}
           </button>
         </div>
+
+        {/* What to expect after submitting */}
+        <div className="mt-10 pt-8 border-t border-border">
+          <p className="text-[13px] font-semibold text-primary uppercase tracking-wider mb-1">
+            What happens after you submit
+          </p>
+          <p className="text-[13px] text-text-light mb-0">
+            No surprises. Here is exactly what to expect.
+          </p>
+        </div>
+      </div>
+
+      {/* Inquiry steps - wider container for 4-column grid */}
+      <div className="mx-auto max-w-4xl px-4 sm:px-7">
+        <InquirySteps />
       </div>
     </section>
   );
