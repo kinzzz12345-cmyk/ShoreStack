@@ -68,7 +68,7 @@ export default function Header() {
               onClick={() => setMobileOpen(false)}
             >
               <ShoreStackLogo className="w-8 h-8" />
-              <span className="text-lg font-semibold tracking-tight text-primary font-[family-name:var(--font-heading)]">
+              <span className="text-xl font-semibold tracking-tight text-primary font-[family-name:var(--font-heading)]">
                 ShoreStack
               </span>
             </Link>
